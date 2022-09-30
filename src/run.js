@@ -33,7 +33,6 @@ exp.get('/*', (req, res) => {
   res.sendFile(pagesDirectory + "/index.html")
 })
 
-
 //Listen to http and redirect to https
 exp.listen(httpport);
 
