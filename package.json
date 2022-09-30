@@ -1,0 +1,16 @@
+{
+  "name": "luvas.io",
+  "version": "1.0.0",
+  "main": "src/run.js",
+  "scripts": {
+    "start": "node src/run.js",
+    "dev": "nodemon src/run.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express-http-to-https": "^1.1.4",
+    "helmet": "^6.0.0"
+  },
+  "description": ""
+}
