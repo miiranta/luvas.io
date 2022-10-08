@@ -6,9 +6,9 @@ const helmet                = require('helmet')
 const cookieSession         = require("cookie-session")
 const redirectToHTTPS       = require('express-http-to-https').redirectToHTTPS
 
-const publicDirectory = path.join(__dirname, "../public") 
-const pagesDirectory = path.join(__dirname, "../pages")
-const sslDirectory = path.join(__dirname, "../ssl")
+const publicDirectory = path.join(__dirname, "../public");
+const pagesDirectory = path.join(__dirname, "../pages");
+const sslDirectory = '/etc/letsencrypt/live/luvas.io';
 
 const httpsOptions = {
   key: fs.readFileSync(sslDirectory + '/privkey.pem'),
