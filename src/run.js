@@ -8,7 +8,7 @@ const redirectToHTTPS       = require('express-http-to-https').redirectToHTTPS
 
 const publicDirectory = path.join(__dirname, "../public");
 const pagesDirectory = path.join(__dirname, "../pages");
-const sslDirectory = '/etc/letsencrypt/live/luvas.io';
+const sslDirectory = process.env.SSLDIR;
 
 const httpsOptions = {
   key: fs.readFileSync(sslDirectory + '/privkey.pem'),

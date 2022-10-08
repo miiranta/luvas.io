@@ -4,7 +4,8 @@
   "main": "src/run.js",
   "scripts": {
     "start": "node src/run.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/run.js -e hbs,js"
+    "dev": "env-cmd -f ./config/dev.env nodemon src/run.js -e hbs,js",
+    "prod": "env-cmd -f ./config/prod.env node src/run.js"
   },
   "author": "",
   "license": "ISC",
