@@ -1,0 +1,18 @@
+<div class="glass-background-wrap">
+
+    @switch (type) {
+
+        @case ("light") {
+            <div class="glass-background-main glass-background-light"></div>
+        }
+
+        @case ("dark") {
+            <div class="glass-background-main glass-background-dark"></div>
+        }
+        
+        @default {
+            <div class="glass-background-main glass-background-default"></div>
+        }
+    }
+    
+</div>

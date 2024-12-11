@@ -1,0 +1,30 @@
+// Variables -----------------------
+
+$color-base: #1c1c1c;
+$color-highlight: #6287ff;
+$color-shadow: #000000;
+
+$color-text: #f0f0f0;
+
+$color-success: #f0f0f0;
+$color-error: #f0f0f0;
+$color-warning: #f0f0f0;
+
+// ---------------------------------
+
+// General -------------------------
+
+body {
+    margin: 0;
+    padding: 0;
+
+    z-index: -10;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+}
+
+// ---------------------------------
+
