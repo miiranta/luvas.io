@@ -16,6 +16,14 @@ Add to src/styles.css:
 ### \<glass-background>
 Adds a nice background.
 
-[type]: string = "default" | "dark" | "light"
+[config] =
+```typescript
+{
+    type: "default" | "dark" | "light",
+    mouse_follow: true | false,
+    gradient: "" | "radial"
+}
+```
+
 
 

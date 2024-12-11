@@ -1,18 +1,35 @@
-<div class="glass-background-wrap">
+<div  class="glass-background-wrap">
 
-    @switch (type) {
-
+    @switch(config.type) {
         @case ("light") {
-            <div class="glass-background-main glass-background-light"></div>
+            <div class="glass-background-main glass-background-light" [ngClass]="extra_classes"></div>
         }
 
         @case ("dark") {
-            <div class="glass-background-main glass-background-dark"></div>
+            <div class="glass-background-main glass-background-dark" [ngClass]="extra_classes"></div>
         }
         
         @default {
-            <div class="glass-background-main glass-background-default"></div>
+            <div class="glass-background-main glass-background-default" [ngClass]="extra_classes"></div>
         }
     }
-    
+
+    @switch(config.gradient) {
+        @case ("radial") {
+            <div class="glass-background-gradient" [ngClass]="extra_classes" [ngStyle]="{background: radial_gradient}"></div>
+        }
+        @default {}
+    }
+
 </div>
+
+@if(config.mouse_follow) {
+    <div (mousemove)="onMouseMove($event)" class="glass-background-wrap-mouse"></div>
+}
+
+<div class="glass-background-wrap-blur"></div>
+
+
+
+
+
