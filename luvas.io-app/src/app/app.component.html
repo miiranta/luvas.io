@@ -1,15 +1,30 @@
 <router-outlet></router-outlet>
 
 <glass-background 
-[config]="{
+[config]=
+"{
     type: 'dark', 
     mouse_follow: true, 
     gradient: 'radial'
-}">
+}"
+>
 </glass-background>
 
 <glass-selector
-[config]="[
+[config]=
+"[
+    {
+        title: 'title1', 
+        description: 'description1', 
+        img_src: 'img_src1',
+        link: 'link1'
+    },
+    {
+        title: 'title1', 
+        description: 'description1', 
+        img_src: 'img_src1',
+        link: 'link1'
+    },
     {
         title: 'title1', 
         description: 'description1', 
@@ -22,5 +37,7 @@
         img_src: 'img_src1',
         link: 'link1'
     }
-]">
+]"
+[title]="'the list title'"
+>
 </glass-selector>

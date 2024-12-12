@@ -1,11 +1,29 @@
-<div class="glass-selector-main f f-col f-center">
-  
-    @for (item of config; track item) {
-
-        <div class="glass-selector-item">
-            <h1>{{item.title}}</h1>
-        </div>
+<div class="glass-selector-main">
+<ngx-simplebar [options]="simpleBarOptions">  
+<div class="glass-selector-wrap f f-col f-center">
     
+    
+    @if (title != null) {
+        <div class="glass-selector-title f f-col f-center">
+            <h1>{{title}}</h1>
+        </div>
     }
 
+    @for (item of config; track item) {
+        <div class="glass-selector-item f f-col f-center shadow" #id (mouseenter)="animateFadeIn(id)" (mouseleave)="animateFadeOut(id)">
+            <div class="glass-selector-item-wrap f f-col f-center">
+
+                <h1>{{item.title}}</h1>
+                <p>{{item.description}}</p>
+
+                <a [href]="item.link">See more...</a>
+            
+            </div>
+        </div>
+    }
+
+
 </div>
+</ngx-simplebar>
+</div>
+

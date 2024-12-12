@@ -1,9 +1,63 @@
 @use "./../glass.scss" as glass;
 
 .glass-selector-main {
+  // Set the containers size to whatever you want
+  height: 100vh;
   width: 100%;
+}
+
+.glass-selector-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+ngx-simplebar {
+	max-height: calc(100vh - 0px);
+  max-width: calc(100vw - 0px);
+	min-height: 100px;
+  min-width: 100px;
 }
 
 .glass-selector-item {
   width: 700px;
+  max-width: 80%;
+
+  min-height: 175px;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  background-color: rgba(255, 255, 255, 0.1);
+
+  margin: 50px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  padding: 0px;
+
+  cursor: pointer;
+
+  scale: 1;
+
+  transition: 0.3s;
+}
+
+.glass-selector-item:hover {
+  scale: 1.05;
+
+  transition: 0.3s;
+}
+
+.glass-selector-item-wrap {
+
+}
+
+.glass-selector-title {
+  font-size: 1.5em;
+  font-weight: 600;
+
+  color: rgba(255, 255, 255, 1);
+
+  margin: 0px;
+  padding: 0;
 }

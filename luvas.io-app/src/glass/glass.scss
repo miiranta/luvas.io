@@ -46,3 +46,15 @@ div {
     justify-content: center;
     align-items: center;
 }
+
+// FX ------------------------------
+
+.blur {
+    backdrop-filter: blur(150px);
+    -webkit-backdrop-filter: blur(150px);
+    filter: blur(150px);
+}
+
+.shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

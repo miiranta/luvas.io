@@ -64,6 +64,7 @@ export class GlassBackgroundComponent {
       this.cancelAnimation(this.animation_running);
     }
 
+    //Radial -- the only type of gradient for now
     this.animation_running = this.updateRadialGradient(x, y);
   }
 
@@ -85,8 +86,7 @@ export class GlassBackgroundComponent {
 
   cancelAnimation (animation: anime.AnimeInstance) {
     let activeInstances = anime.running;
-    let index = activeInstances.indexOf(animation);
-    activeInstances.splice(index, 1);
+    activeInstances = activeInstances.filter((instance) => instance !== animation);
   }
 
 }
