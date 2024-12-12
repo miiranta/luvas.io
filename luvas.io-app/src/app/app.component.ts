@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { GlassBackgroundComponent } from './../glass/glass-background/glass-background.component';
+import { GlassSelectorComponent } from "../glass/glass-selector/glass-selector.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, GlassBackgroundComponent],
+  imports: [RouterOutlet, GlassBackgroundComponent, GlassSelectorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

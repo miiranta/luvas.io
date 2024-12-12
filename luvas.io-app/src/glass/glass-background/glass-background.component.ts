@@ -1,5 +1,7 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component, Input, NgModule, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { GlassDoceventsService } from '../services/glass-docevents/glass-docevents.service';
 
 import anime from 'animejs';
 
@@ -22,56 +24,59 @@ export class GlassBackgroundComponent {
     mouse_follow: true,
     gradient: "radial"
   };
+
+  private eventService: GlassDoceventsService = inject(GlassDoceventsService);
   
-  mouse_x: number = 0;
-  mouse_y: number = 0;
+  private animation_duration_ms: number = 250;
+  private animation_delay_ms: number = 0;
+  private update_cooldown_ms: number = 50;
 
   private last_animation_update: number = 0;
   private animation_running: anime.AnimeInstance | null = null;
+
   private gradientX: number = 0;
   private gradientY: number = 0;
-
   radial_gradient: string = "";
-
   extra_classes: string = "";
 
+  constructor() {
+
+    // Add mouse follow event
+    if(this.config.mouse_follow) {
+      this.eventService.addCallbackToMouseMove((x: number, y: number) => {
+        this.updateAnimation(x, y);
+      });
+    }
+
+  }
+
   ngOnInit() {
-    this.updateRadialGradient();
+    this.updateRadialGradient(0, 0);
   }
 
-  onMouseMove(event: MouseEvent) {
-    this.mouse_x = event.clientX;
-    this.mouse_y = event.clientY;
-
-    this.animation_running = this.updateRadialGradient();
-  }
-
-  updateRadialGradient(): anime.AnimeInstance | null {
-    const animation_duration_ms = 200;
-    const animation_delay_ms = 0;
-    const update_cooldown_ms = 100;
-
+  updateAnimation(x: number, y: number): void {
     const now = Date.now();
 
-    if(now - this.last_animation_update < update_cooldown_ms) {
-      return this.animation_running;
+    if(now - this.last_animation_update < this.update_cooldown_ms) {
+      return;
     }
 
     this.last_animation_update = now;
-    
+
     if(this.animation_running != null) {
       this.cancelAnimation(this.animation_running);
     }
-    
-    const endx = this.mouse_x;
-    const endy = this.mouse_y;
 
+    this.animation_running = this.updateRadialGradient(x, y);
+  }
+
+  updateRadialGradient(x: number, y: number): anime.AnimeInstance | null {
     const animation = anime({
       targets: this,
-      gradientX: endx,
-      gradientY: endy,
-      duration: animation_duration_ms,
-      delay: animation_delay_ms,
+      gradientX: x,
+      gradientY: y,
+      duration: this.animation_duration_ms,
+      delay: this.animation_delay_ms,
       easing: 'easeOutQuad',
       update: () => {
         this.radial_gradient = 'radial-gradient(circle at ' + this.gradientX + 'px ' + this.gradientY + 'px, rgba(255, 255, 255, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))';
@@ -79,7 +84,6 @@ export class GlassBackgroundComponent {
     });
 
     return animation;
-
   }
 
   cancelAnimation (animation: anime.AnimeInstance) {

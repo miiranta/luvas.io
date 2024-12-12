@@ -28,3 +28,21 @@ div {
 
 // ---------------------------------
 
+// Flex ----------------------------
+
+.f {
+    display: flex;
+}
+
+.f-col {
+    flex-direction: column;
+}
+
+.f-row {
+    flex-direction: row;
+}
+
+.f-center {
+    justify-content: center;
+    align-items: center;
+}

@@ -3,8 +3,8 @@
 $gradient-base: glass.$color-base;
 $gradient-shadow: glass.$color-shadow;
 
-.glass-background-wrap {
-    z-index: -9;
+.glass-background-main {
+    z-index: -10;
 
     position: fixed;
     top: 0;
@@ -13,15 +13,14 @@ $gradient-shadow: glass.$color-shadow;
     height: 100%;
 }
 
-.glass-background-wrap-mouse {
-    z-index: -8;
+.glass-background-wrap {
+    z-index: -9;
 
     position: fixed;
     top: 0;
 
     width: 100%;
     height: 100%;
-
 }
 
 .glass-background-wrap-blur {
@@ -39,7 +38,7 @@ $gradient-shadow: glass.$color-shadow;
     filter: blur(150px);
 }
 
-.glass-background-main {
+.glass-background-inner {
     z-index: -8;
 
     position: fixed;
