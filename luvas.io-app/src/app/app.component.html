@@ -11,7 +11,7 @@
 </glass-background>
 
 <glass-selector
-[config]=
+[items]=
 "[
     {
         title: 'title1', 
@@ -38,6 +38,12 @@
         link: 'link1'
     }
 ]"
-[title]="'the list title'"
+
+[config]=
+"{ 
+    title: 'title', 
+    width: '100vw', 
+    height: '100vh'
+}"
 >
 </glass-selector>

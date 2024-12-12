@@ -1,25 +1,32 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { SimplebarAngularModule } from 'simplebar-angular';
 import anime from 'animejs';
 
-interface GlassSelectorConfig {
+interface GlassSelectorItems {
   title: string;
   description: string;
   img_src: string;
   link: string;
 }
 
+interface GlassSelectorConfig {
+  title: string;
+  width?: string;
+  height?: string;
+}
+
 @Component({
   selector: 'glass-selector',
-  imports: [SimplebarAngularModule],
+  imports: [SimplebarAngularModule, CommonModule],
   templateUrl: './glass-selector.component.html',
   styleUrl: './glass-selector.component.scss'
 })
 export class GlassSelectorComponent {
 
-  @Input() config: GlassSelectorConfig[] = [];
-  @Input() title: string | null = null;
+  @Input() items: GlassSelectorItems[] = [];
+  @Input() config: GlassSelectorConfig = { title: 'Title', width: '100%', height: '100%' };
 
   simpleBarOptions = { 
     autoHide: true, 
@@ -92,7 +99,7 @@ export class GlassSelectorComponent {
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: 'easeInOutQuad',
       duration: 300,
-      delay: 300
+      delay: 0
     });
 
   }

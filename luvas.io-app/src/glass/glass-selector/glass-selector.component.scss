@@ -1,19 +1,44 @@
 @use "./../glass.scss" as glass;
 
+// Set the containers size to whatever you want
+// Overwritten by TS!
+$list-width: 100%;
+$list-height: 100%;
+
+// Everything
 .glass-selector-main {
-  // Set the containers size to whatever you want
-  height: 100vh;
-  width: 100%;
+  overflow: hidden;
+}
+
+.glass-selector-main-sub {
+  height: $list-height;
+  max-height: 100vh;
+
+  width: $list-width;
+
+  overflow: hidden;
+}
+
+// Just the header
+.glass-selector-main-header {
+  height: 20%;
+  width: $list-width;
+}
+
+// Just the items
+.glass-selector-main-items {
+  height: 80%;
+  width: $list-width;
 }
 
 .glass-selector-wrap {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 
 ngx-simplebar {
-	max-height: calc(100vh - 0px);
-  max-width: calc(100vw - 0px);
+	max-height: 100%;
+  max-width: 100%;
 	min-height: 100px;
   min-width: 100px;
 }

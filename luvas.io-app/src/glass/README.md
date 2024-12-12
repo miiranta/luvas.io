@@ -33,7 +33,7 @@ Adds a nice background.
 ### \<glass-selector>
 Adds a selection menu.
 
-[config] =
+[items] =
 ```typescript
 [
 {
@@ -44,9 +44,13 @@ Adds a selection menu.
 }
 ]
 ```
-[title] =
+[config] =
 ```typescript
- _: string
+{
+    title: string,
+    height: number, // in px or vh
+    width: number,  // in px or vw
+}
 ```
 
 
