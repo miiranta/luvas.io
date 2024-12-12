@@ -9,6 +9,7 @@ interface GlassSelectorItems {
   description: string;
   img_src: string;
   link: string;
+  tags?: string[];
 }
 
 interface GlassSelectorConfig {
@@ -31,6 +32,13 @@ export class GlassSelectorComponent {
   @ViewChild('simplebar_list_instance') simplebar_list_instance: any;
   private simplebar_scroll_instance: any;
 
+  private runningJump = false;
+
+  tagAndFreq: { [key: string]: number } = {};
+
+  ngOnInit() {
+    this.processTags(this.items);
+  }
 
   ngAfterViewInit() {
 
@@ -40,19 +48,18 @@ export class GlassSelectorComponent {
       this.animateCenterPop(this.simplebar_scroll_instance);
     });
 
-    this.animateCenterPop(this.simplebar_scroll_instance, true);
+    this.animateCenterPop(this.simplebar_scroll_instance, 0);
 
   }
 
   simpleBarOptions = { 
     autoHide: true, 
-    scrollbarMinSize: 100 
+    scrollbarMinSize: 100,
+    
   };
 
   async animateFadeIn(element: HTMLElement){
     
-    this.animateCenterPop(this.simplebar_scroll_instance);
-
     anime({
       targets: element,
       opacity: [0.6, 1],
@@ -145,7 +152,9 @@ export class GlassSelectorComponent {
 
   }
 
-  async animateCenterPop(element: HTMLElement, start=false){
+  async animateCenterPop(element: HTMLElement, force: any = undefined){
+    if(this.runningJump) return;
+    
     const elem_height = element.getBoundingClientRect().height;
 
     const items = element.querySelectorAll('.glass-selector-item');
@@ -169,17 +178,19 @@ export class GlassSelectorComponent {
     });
 
     // Startup?
-    if(start) center_item = 0;
+    if(force !== undefined) center_item = force;
 
     // Scale the center item
     items.forEach((item, index) => {
       if(index === center_item){
         (item as HTMLElement).style.transform = 'scale(1.06)';
         (item as HTMLElement).style.opacity = '1';
+        if(force == undefined) this.animateFadeIn(item as HTMLElement);
       } 
       else if (index === center_item - 1 || index === center_item + 1){
         (item as HTMLElement).style.transform = 'scale(1.03)';
         (item as HTMLElement).style.opacity = '0.8';
+        this.animateFadeOut(item as HTMLElement);
       }
       else if (index === center_item - 2 || index === center_item + 2){
         (item as HTMLElement).style.transform = 'scale(1.015)';
@@ -191,6 +202,55 @@ export class GlassSelectorComponent {
       }
     });
 
+  }
+
+  centerItem(element: HTMLElement, simplebar: any){
+    this.runningJump = true;
+
+    const simplebar_scroll = simplebar.SimpleBar.getScrollElement();
+    const target_scrolltop = element.offsetTop - 100;
+
+    anime({
+      targets: simplebar_scroll,
+      scrollTop: target_scrolltop,
+      duration: 200,
+      easing: 'easeInOutQuad',
+      complete: () => {
+        this.runningJump = false;
+        this.animateCenterPop(simplebar_scroll);
+      }
+    });
+
+  }
+
+  processTags(items: GlassSelectorItems[]){
+      
+    // Process tags
+    items.forEach((item) => {
+      item.tags = this.filterTags(item.tags || []);
+    });
+
+    // Count frequency
+    items.forEach((item) => {
+      item.tags?.forEach((tag) => {
+        this.tagAndFreq[tag] = this.tagAndFreq[tag] ? this.tagAndFreq[tag] + 1 : 1;
+      });
+    });
+
+  }
+
+  filterTags(tags: string[]): string[] {
+   
+    // All uppercase
+    tags = tags.map((tag) => tag.toUpperCase());
+
+    // Trim
+    tags = tags.map((tag) => tag.trim());
+
+    // Remove duplicates
+    tags = tags.filter((tag, index) => tags.indexOf(tag) === index);
+
+    return tags;
   }
 
 }

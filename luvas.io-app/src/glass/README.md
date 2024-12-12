@@ -40,7 +40,8 @@ Adds a selection menu.
     title: string,
     description: string,
     img_src: string,
-    link: string
+    link: string,
+    tags: string[]
 }
 ]
 ```
