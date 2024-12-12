@@ -39,7 +39,7 @@ export class GlassBackgroundComponent {
   radial_gradient: string = "";
   extra_classes: string = "";
 
-  constructor() {
+  ngOnInit() {
 
     // Add mouse follow event
     if(this.config.mouse_follow) {
@@ -48,9 +48,6 @@ export class GlassBackgroundComponent {
       });
     }
 
-  }
-
-  ngOnInit() {
     this.updateRadialGradient(0, 0);
   }
 
