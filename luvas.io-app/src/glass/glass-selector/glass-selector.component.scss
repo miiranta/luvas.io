@@ -29,6 +29,9 @@ $list-height: 100%;
 .glass-selector-main-items {
   height: 80%;
   width: $list-width;
+
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
 
 .glass-selector-wrap {
@@ -53,7 +56,7 @@ ngx-simplebar {
 
   overflow: hidden;
 
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
 
   margin: 50px;
   margin-top: 15px;
@@ -86,3 +89,4 @@ ngx-simplebar {
   margin: 0px;
   padding: 0;
 }
+

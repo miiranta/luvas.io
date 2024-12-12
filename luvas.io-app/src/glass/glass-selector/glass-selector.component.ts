@@ -1,7 +1,7 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component, Input, NgModule, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SimplebarAngularModule } from 'simplebar-angular';
+import { SimplebarAngularComponent, SimplebarAngularModule } from 'simplebar-angular';
 import anime from 'animejs';
 
 interface GlassSelectorItems {
@@ -28,6 +28,22 @@ export class GlassSelectorComponent {
   @Input() items: GlassSelectorItems[] = [];
   @Input() config: GlassSelectorConfig = { title: 'Title', width: '100%', height: '100%' };
 
+  @ViewChild('simplebar_list_instance') simplebar_list_instance: any;
+  private simplebar_scroll_instance: any;
+
+
+  ngAfterViewInit() {
+
+    // Add scroll event listener
+    this.simplebar_scroll_instance = this.simplebar_list_instance.SimpleBar.getScrollElement();
+    this.simplebar_scroll_instance.addEventListener('scroll', (event: Event) => {
+      this.animateCenterPop(this.simplebar_scroll_instance);
+    });
+
+    this.animateCenterPop(this.simplebar_scroll_instance, true);
+
+  }
+
   simpleBarOptions = { 
     autoHide: true, 
     scrollbarMinSize: 100 
@@ -35,10 +51,12 @@ export class GlassSelectorComponent {
 
   async animateFadeIn(element: HTMLElement){
     
+    this.animateCenterPop(this.simplebar_scroll_instance);
+
     anime({
       targets: element,
-      opacity: [0, 1],
-      duration: 300,
+      opacity: [0.6, 1],
+      duration: 100,
       easing: 'easeInOutQuad'
     });
 
@@ -122,6 +140,54 @@ export class GlassSelectorComponent {
         } catch(e) { 
           // Do nothing, there are no consequences!
         }
+      }
+    });
+
+  }
+
+  async animateCenterPop(element: HTMLElement, start=false){
+    const elem_height = element.getBoundingClientRect().height;
+
+    const items = element.querySelectorAll('.glass-selector-item');
+    const items_pos: DOMRect[] = [];
+    items.forEach((item) => {
+      const item_pos = item.getBoundingClientRect();
+      items_pos.push(item_pos);
+    });
+
+    // Which item is in the center?
+    let center_item = 0;
+    let center_item_pos = 0;
+    let center_item_distance = elem_height;
+    items_pos.forEach((item_pos, index) => {
+      const item_distance = Math.abs(item_pos.top - (elem_height / 2));
+      if(item_distance < center_item_distance){
+        center_item = index;
+        center_item_pos = item_pos.top;
+        center_item_distance = item_distance;
+      }
+    });
+
+    // Startup?
+    if(start) center_item = 0;
+
+    // Scale the center item
+    items.forEach((item, index) => {
+      if(index === center_item){
+        (item as HTMLElement).style.transform = 'scale(1.06)';
+        (item as HTMLElement).style.opacity = '1';
+      } 
+      else if (index === center_item - 1 || index === center_item + 1){
+        (item as HTMLElement).style.transform = 'scale(1.03)';
+        (item as HTMLElement).style.opacity = '0.8';
+      }
+      else if (index === center_item - 2 || index === center_item + 2){
+        (item as HTMLElement).style.transform = 'scale(1.015)';
+        (item as HTMLElement).style.opacity = '0.6';
+      }
+      else {
+        (item as HTMLElement).style.transform = 'scale(1)';
+        (item as HTMLElement).style.opacity = '0.4';
       }
     });
 

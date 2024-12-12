@@ -9,11 +9,11 @@
     }
     </div>
 
-    <div class="glass-selector-main-items">
-    <ngx-simplebar [options]="simpleBarOptions">  
+    <div class="glass-selector-main-items"  >
+    <ngx-simplebar [options]="simpleBarOptions" #simplebar_list_instance> 
     <div class="glass-selector-wrap f f-col f-center">
         
-        <div style="height: 5vh;"></div>
+        <div style="height: 10vh;"></div>
 
         @for (item of items; track item) {
             <div class="glass-selector-item f f-col f-center shadow" #id (mouseenter)="animateFadeIn(id)" (mouseleave)="animateFadeOut(id)">
