@@ -394,7 +394,7 @@ export class GlassSelectorComponent {
     while(!picker_wrap.querySelector('.glass-selector-tagpicker-options')) await new Promise(resolve => setTimeout(resolve, 100));
     
     // Get picker instance
-    this.picker_instance = picker_wrap.querySelector('.simplebar-content-wrapper');
+    this.picker_instance = picker_wrap.querySelector('.simplebar-wrapper');
 
     //
     this.picker_enable_outside_click = true;
@@ -448,6 +448,8 @@ export class GlassSelectorComponent {
     const click_is_in = this.isInViewport(this.selected_instance, event.clientX, event.clientY);
     if(!click_is_in) return;
 
+    if(this.picker_open) return;
+
     // Get the link
     const link = this.selected_instance.querySelector('.glass-selector-item-link');
     
@@ -459,6 +461,7 @@ export class GlassSelectorComponent {
 
   isInViewport(element: HTMLElement, x: number, y: number) {
     const rect = element.getBoundingClientRect();
+  
     return (
       rect.top <= y &&
       rect.bottom >= y &&
