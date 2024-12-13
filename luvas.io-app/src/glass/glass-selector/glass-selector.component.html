@@ -1,40 +1,47 @@
 <div class="glass-selector-main" [ngStyle]="{'width': config.width, 'height': config.height}">
 <div class="glass-selector-main-sub f f-col f-center">
 
-    <div class="glass-selector-main-header f f-row f-center">
-    @if (config.title != null) {
+    <div class="glass-selector-main-header f f-col f-center">
+    
+        @if (config.title != null) {
         <div class="glass-selector-title f f-col f-center">
             <h1>{{config.title}}</h1>
         </div>
-    }
+        }
     
         <div class="glass-selector-tagpicker f f-col f-center">
 
-            <button class="glass-selector-tagpicker-button" (click)="picker_open = !picker_open">Select tags...</button>
+            <button class="glass-selector-tagpicker-button btn-square" (click)="picker_open = !picker_open">
+                <div class="f f-row f-center">
+                <div class="f f-col f-center">
+                <img src="glass-assets/icons/filter-white.png" width="28px">
+                </div>
+                </div>
+            </button>
             
             @if (picker_open) {
-                <div class="glass-selector-tagpicker-options f f-col f-center" #id_picker>
+                <div class="glass-selector-tagpicker-options-wrap">
+                <div class="glass-selector-tagpicker-options glass-plane shadow f f-col f-end" #id_picker>
 
                     @for (item of tagAndFreq; track item) {
 
-                        @if (item.tag != "ALL") {
-                            <div class="glass-selector-tagpicker-item f f-row f-center">
-                                <p class="glass-selector-tagpicker-option">{{item.tag + " " + item.freq}}</p>
-                                <input type="checkbox" [checked]="item.selected" [name]="item.tag" class="glass-selector-tagpicker-checkbox" #id_picker_checkbox (click)="picker_update_selection(id_picker, id_picker_checkbox)">
+                        <div class="glass-selector-tagpicker-item f f-row f-center">
+                            <div class="glass-selector-tagpicker-text-wrap f f-row f-start">
+                                <p class="glass-selector-tagpicker-text">{{item.tag + " (" + item.freq + ")"}}</p>
                             </div>
+
+                            <input type="checkbox" [checked]="item.selected" [name]="item.tag" class="glass-selector-tagpicker-checkbox" #id_picker_checkbox (click)="picker_update_selection(id_picker, id_picker_checkbox)">
+                        </div>
+
+                        @if (item.tag == 'ALL') {
+                            <div class="line-break"></div>
                         }
-                        @else
-                        {
-                            <div class="glass-selector-tagpicker-item f f-row f-center">
-                                <p class="glass-selector-tagpicker-option">{{item.tag}}</p>
-                                <input type="checkbox" [checked]="item.selected" [name]="item.tag" class="glass-selector-tagpicker-checkbox" #id_picker_checkbox (click)="picker_update_selection(id_picker, id_picker_checkbox)">
-                            </div>
-                        }
+                        
                     }
 
                 </div>
+                </div>
             }
-
 
         </div>
     
@@ -48,7 +55,7 @@
 
         @for (item of items; track item) {
             @if (item.show) {
-                <div class="glass-selector-item f f-col f-center shadow" #id (mouseenter)="animateFadeIn(id)" (mouseleave)="animateFadeOut(id)" (click)="centerItem(id, simplebar_list_instance)">
+                <div class="glass-selector-item glass-plane shadow f f-col f-center" #id (mouseenter)="animateFadeIn(id)" (mouseleave)="animateFadeOut(id)" (click)="centerItem(id, simplebar_list_instance)">
                     <div class="glass-selector-item-wrap f f-col f-center">
 
                         <h1>{{item.title}}</h1>

@@ -22,7 +22,7 @@ $list-height: 100%;
 // Just the header
 .glass-selector-main-header {
   height: 20%;
-  width: $list-width;
+  width: 700px;
 }
 
 // Just the items
@@ -56,11 +56,8 @@ ngx-simplebar {
 
   overflow: hidden;
 
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-
   margin: 50px;
-  margin-top: 15px;
+  margin-top: 20px;
   margin-bottom: 0px;
   padding: 0px;
 
@@ -83,21 +80,78 @@ ngx-simplebar {
   font-size: 1.5em;
   font-weight: 600;
 
-  color: rgba(255, 255, 255, 1);
-
   margin: 0px;
-  padding: 0;
+  padding: 10px;
 }
 
-.glass-selector-tagpicker-item {
-  height: 20px;
-}
-
+// Tagpicker
 .glass-selector-tagpicker {
   margin: 0px;
   padding: 0px;
 }
 
+.glass-selector-tagpicker-button {
+  margin: 0px;
+  padding: 0px;
+
+  font-weight: bolder;
+}
+
+.glass-selector-tagpicker-options-wrap {
+  margin: 0px;
+  padding: 0px;
+  
+  // Fixed position relative to the parent
+  // Do not occupy space
+  position: relative;
+  width: 0px;
+  height: 0px;
+
+  left: -110px;
+
+  z-index: 1;
+}
+
+.glass-selector-tagpicker-options {
+  width: 200px;
+  
+  padding: 10px;
+
+  margin-top: 8px;
+}
+
+.glass-selector-tagpicker-item {
+  width: 100%;
+
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.glass-selector-tagpicker-text {
+  font-size: 1em;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 1);
+
+  word-break: break-all;
+
+  margin: 0px;
+  padding: 0px;
+}
+
+.glass-selector-tagpicker-text-wrap {
+  width: 100%;
+}
+
+.glass-selector-tagpicker-checkbox {
+  margin: 0px;
+  padding: 0px;
+
+  width: 20px;
+  height: 20px;
+}
+
+// Simplebar
 ::ng-deep .simplebar-scrollbar::before {
   background-color: rgba(255, 255, 255, 0.4) !important;
 }

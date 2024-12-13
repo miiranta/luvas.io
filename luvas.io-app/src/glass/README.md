@@ -6,12 +6,14 @@ Created for Angular projects.
 
 ## Setup
 
-Add to src/styles.css:
+- Move "glass-assets" folder to "public".
+
+- Add to src/styles.css:
 ```scss
 @use "glass/styles.scss";
 ```
 
-Install modules:
+- Install modules:
 ```bash
 npm i simplebar-angular --save
 ```

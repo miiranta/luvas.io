@@ -10,6 +10,12 @@ $color-success: #f0f0f0;
 $color-error: #f0f0f0;
 $color-warning: #f0f0f0;
 
+$font-main: 'Roboto', sans-serif;
+$font-sub: 'Roboto', sans-serif;
+
+$font-main-color: #ffffff;
+$font-sub-color: #cfcfcf;
+
 // ---------------------------------
 
 // General -------------------------
@@ -24,6 +30,24 @@ body {
 div {
     margin: 0;
     padding: 0;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+
+    font-family: $font-main;
+
+    color: $font-main-color;
+}	
+
+h2 p label {
+    margin: 0;
+    padding: 0;
+
+    font-family: $font-sub;
+
+    color: $font-sub-color;
 }
 
 // ---------------------------------
@@ -47,6 +71,16 @@ div {
     align-items: center;
 }
 
+.f-end {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.f-start {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 // FX ------------------------------
 
 .blur {
@@ -57,4 +91,61 @@ div {
 
 .shadow {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+// ---------------------------------
+
+.line-break {
+    width: 100%; 
+    height: 2px; 
+
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+    border-radius: 1px;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.glass-plane {
+    border-radius: 10px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+// ---------------------------------
+
+.btn-square {
+    border-radius: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+
+    padding: 3px;
+
+    cursor: pointer;
+
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.279);
+
+    font-family: $font-sub;
+    color: rgba(255, 255, 255, 1);
+
+    transition: 0.3s;
+    scale: 1;
+    
+}
+
+.btn-square:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+
+    transition: 0.3s;
+    
+
+    // inner border 1px
+    border: 2px solid rgb(255, 255, 255);
 }
