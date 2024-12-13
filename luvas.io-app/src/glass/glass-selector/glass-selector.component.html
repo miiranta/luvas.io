@@ -21,6 +21,7 @@
             
             @if (picker_open) {
                 <div class="glass-selector-tagpicker-options-wrap">
+                <ngx-simplebar class="glass-selector-tagpicker-options-sb" [options]="simpleBarOptions">     
                 <div class="glass-selector-tagpicker-options glass-plane shadow f f-col f-end" #id_picker>
 
                     @for (item of tagAndFreq; track item) {
@@ -40,7 +41,9 @@
                     }
 
                 </div>
+                </ngx-simplebar>
                 </div>
+                
             }
 
         </div>
@@ -48,7 +51,7 @@
     </div>
 
     <div class="glass-selector-main-items"  >
-    <ngx-simplebar [options]="simpleBarOptions" #simplebar_list_instance> 
+    <ngx-simplebar class="glass-selector-sb" [options]="simpleBarOptions" #simplebar_list_instance> 
     <div class="glass-selector-wrap f f-col f-center">
         
         <div style="height: 10vh;"></div>
@@ -56,14 +59,44 @@
         @for (item of items; track item) {
             @if (item.show) {
                 <div class="glass-selector-item glass-plane shadow f f-col f-center" #id (mouseenter)="animateFadeIn(id)" (mouseleave)="animateFadeOut(id)" (click)="centerItem(id, simplebar_list_instance)">
-                    <div class="glass-selector-item-wrap f f-col f-center">
+                    <div class="glass-selector-item-wrap f f-col f-start w100 h100">
+                    <div class="glass-selector-item-wrap f f-row f-start w100 h100">
+                        
+                        <div class="f f-col f-start w100 h100">
+                            <div class="f f-row f-start h100 glass-selector-item-title">
+                            <h1>{{item.title}}</h1>
+                            </div>
+                            
+                            <div class="f f-row f-start h100 glass-selector-item-desc">
+                            <p>{{item.description}}</p>    
+                            </div>
 
-                        <h1>{{item.title}}</h1>
-                        <p>{{item.description}}</p>
-                        <p>{{item.tags}}</p>
+                            <div class="glass-selector-item-tags">
 
-                        <a [href]="item.link">See more...</a>
-                    
+                                @for (tag of item.tags; track tag) {
+                                    <div class="glass-selector-item-tag">
+                                        <p>{{tag}}</p>   
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+                        <div class="f f-col f-center h100">
+
+                            <div class="f f-col f-center glass-selector-item-img">
+                            <img [src]="item.img_src" width="100%">
+                            </div>
+
+                            <div class="f f-col f-center" style="height: 32px;"></div>
+
+                            <div class="glass-selector-item-btn-wrap">
+                                <button class="btn-wide glass-selector-item-btn"> See more </button>  
+                            </div>
+
+                        </div>
+
+                    </div>
                     </div>
                 </div>
             }

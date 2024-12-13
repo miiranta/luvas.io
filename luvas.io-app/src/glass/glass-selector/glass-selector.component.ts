@@ -91,7 +91,7 @@ export class GlassSelectorComponent {
     
     anime({
       targets: element,
-      opacity: [0.6, 1],
+      opacity: [0.9, 1],
       duration: 100,
       easing: 'easeInOutQuad'
     });
@@ -182,6 +182,7 @@ export class GlassSelectorComponent {
   }
 
   async animateCenterPop(element: HTMLElement, force: any = undefined){
+ 
     if(this.runningJump) return;
     if(!element) return;
     
@@ -213,21 +214,24 @@ export class GlassSelectorComponent {
     // Scale the center item
     items.forEach((item, index) => {
       if(index === center_item){
-        (item as HTMLElement).style.transform = 'scale(1.06)';
+        (item as HTMLElement).style.scale = '1';
         (item as HTMLElement).style.opacity = '1';
+        (item as HTMLElement).style.zIndex = '1';
         if(force == undefined) this.animateFadeIn(item as HTMLElement);
       } 
       else if (index === center_item - 1 || index === center_item + 1){
-        (item as HTMLElement).style.transform = 'scale(1.03)';
+        (item as HTMLElement).style.scale = '0.9';
         (item as HTMLElement).style.opacity = '0.8';
+        (item as HTMLElement).style.zIndex = '0';
         this.animateFadeOut(item as HTMLElement);
       }
       else if (index === center_item - 2 || index === center_item + 2){
-        (item as HTMLElement).style.transform = 'scale(1.015)';
+        (item as HTMLElement).style.scale = '0.8';
         (item as HTMLElement).style.opacity = '0.6';
+        (item as HTMLElement).style.zIndex = '0';
       }
       else {
-        (item as HTMLElement).style.transform = 'scale(1)';
+        (item as HTMLElement).style.scale = '0.7';
         (item as HTMLElement).style.opacity = '0.4';
       }
     });

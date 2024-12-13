@@ -39,7 +39,7 @@ $list-height: 100%;
   width: 100%;
 }
 
-ngx-simplebar {
+.glass-selector-sb {
 	max-height: 100%;
   max-width: 100%;
 	min-height: 100px;
@@ -76,12 +76,83 @@ ngx-simplebar {
 
 //.glass-selector-item-wrap {}
 
+.glass-selector-item-title {
+
+  font-weight: 600;
+
+  margin: 12px;
+  margin-bottom: 0px;
+  margin-left: 16px;
+  padding: 0px;
+
+  top: 100px;
+
+  text-align: start;
+}
+
+.glass-selector-item-desc {
+  margin: 10px;
+  margin-top: 5px;
+  margin-left: 18px;
+  padding: 0px;
+
+  text-align: start;
+}
+
+.glass-selector-item-tags {
+  margin: 10px;
+  margin-top: 0px;
+  padding: 0px;
+
+  min-height: 30px;
+
+  text-align: start;
+
+  display: block;
+  float: left;
+}
+
+.glass-selector-item-tag {
+  padding: 5px;
+  margin: 5px;
+  
+  font-size: 10pt !important;
+
+  float: left;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+}
+
 .glass-selector-title {
-  font-size: 1.5em;
+  font-size: 20pt !important;
   font-weight: 600;
 
   margin: 0px;
   padding: 6px;
+}
+
+.glass-selector-item-img {
+  width: 90px;
+  margin: 20px;
+
+  border-radius: 10px;
+}
+
+.glass-selector-item-btn-wrap {
+  position: absolute;
+
+  bottom: 10px;
+  right: 40px;
+
+  width: 40px;
+}
+
+.glass-selector-item-btn {
+  width: 70px;
+  height: 30px;
+
+  border: 2px solid rgb(225, 0, 255);
 }
 
 // Tagpicker
@@ -112,12 +183,24 @@ ngx-simplebar {
   z-index: 1;
 }
 
+.glass-selector-tagpicker-options-sb {
+  width: 220px;
+  max-height: 300px;
+
+  margin: 0px;
+  padding: 0px;
+
+}
+
 .glass-selector-tagpicker-options {
   width: 200px;
+  height: 100%;
   
   padding: 10px;
 
   margin-top: 8px;
+
+  z-index: 2;
 }
 
 .glass-selector-tagpicker-item {
@@ -128,7 +211,7 @@ ngx-simplebar {
 }
 
 .glass-selector-tagpicker-text {
-  font-size: 1em;
+  font-size: 12pt !important;
   font-weight: 400;
 
   color: rgba(255, 255, 255, 1);
@@ -154,4 +237,12 @@ ngx-simplebar {
 // Simplebar
 ::ng-deep .simplebar-scrollbar::before {
   background-color: rgba(255, 255, 255, 0.4) !important;
+
+  margin: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+::ng-deep.glass-selector-tagpicker-options-sb .simplebar-scrollbar::before {
+  margin-top: 20px;
 }
