@@ -385,7 +385,7 @@ export class GlassSelectorComponent {
     while(!picker_wrap.querySelector('.glass-selector-tagpicker-options')) await new Promise(resolve => setTimeout(resolve, 100));
     
     // Get picker instance
-    this.picker_instance = picker_wrap.querySelector('.glass-selector-tagpicker-options');
+    this.picker_instance = picker_wrap.querySelector('.simplebar-content-wrapper');
 
     //
     this.picker_enable_outside_click = true;

@@ -246,3 +246,9 @@ $list-height: 100%;
 ::ng-deep.glass-selector-tagpicker-options-sb .simplebar-scrollbar::before {
   margin-top: 20px;
 }
+
+::ng-deep.glass-selector-tagpicker-options-sb .simplebar-content-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
