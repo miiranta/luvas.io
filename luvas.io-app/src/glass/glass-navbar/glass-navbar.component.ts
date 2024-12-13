@@ -1,9 +1,19 @@
-import { Component, inject, viewChild, ViewChild } from '@angular/core';
+import { Component, inject, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { GlassDoceventsService } from '../services/glass-docevents/glass-docevents.service';
 
 import anime from 'animejs';
+
+interface NavBarConfig {
+  title_start: string[];
+  title_end: string[];
+  links: {
+    title: string;
+    link: string;
+    padding: string;
+  }[][];
+}
 
 @Component({
   selector: 'glass-navbar',
@@ -16,6 +26,21 @@ export class GlassNavbarComponent {
   private eventService: GlassDoceventsService = inject(GlassDoceventsService);
 
   @ViewChild('glassNavbar') glassNavbar!: any;
+
+  @Input() config: NavBarConfig = {
+    title_start: ['title1', 'title2'],
+    title_end: ['title3', 'title4'],
+    links: [
+      [
+        {title: 'Link1', link: '/link1', padding: '0 0 0 0'},
+      ],
+      [
+        {title: 'Link2', link: '/link2', padding: '0 0 0 0'},
+        {title: 'Link3', link: '/link3', padding: '0 0 0 0'},
+        {title: 'Link4', link: '/link4', padding: '0 0 0 0'},
+      ]
+    ]
+  };
 
   route_parts: string[] = [];
 
@@ -63,11 +88,23 @@ export class GlassNavbarComponent {
 
   }
 
+  navigateTo(route: string) {
+    this.router.navigate([route]);
+  }
+
   toggleNav(nav: HTMLElement) {
     
     if(this.nav_animating) return;
     if(!this.nav_open) {
       this.nav_animating = true;
+
+      // Transform 180 glass-navbar-title-end
+      anime({
+        targets: '.glass-navbar-title-end',
+        rotate: 270,
+        duration: 10,
+        easing: 'easeInOutQuad'
+      });
 
       // Translate down
       anime({
@@ -85,6 +122,14 @@ export class GlassNavbarComponent {
       this.nav_animating = true;
 
       console.log('closing nav');
+
+      // Transform 180 glass-navbar-title-end
+      anime({
+        targets: '.glass-navbar-title-end',
+        rotate: 90,
+        duration: 10,
+        easing: 'easeInOutQuad'
+      });
 
       // Translate up
       anime({
@@ -107,6 +152,5 @@ export class GlassNavbarComponent {
       this.toggleNav(this.glassNavbar.nativeElement);
     }
   }
-
 
 }

@@ -1,6 +1,24 @@
 <router-outlet></router-outlet>
 
-<glass-navbar></glass-navbar>
+<glass-navbar
+[config]=
+"{
+    title_start: ['luvas.io'],
+    title_end: ['Created by', 'Lucas Miranda'],
+    links: [
+        [
+            {title: '🏠', link: '/', padding: '0 0 5px 0'},
+        ],
+        [
+            {title: '📒', link: '/portifolio', padding: '0 0 2px 0'},
+        ]
+    ]
+}"
+
+
+
+
+></glass-navbar>
 
 <glass-background 
 [config]=

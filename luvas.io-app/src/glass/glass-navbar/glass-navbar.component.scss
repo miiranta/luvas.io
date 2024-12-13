@@ -22,6 +22,8 @@
     opacity: 1;
     
     z-index: 1000;
+
+    cursor: pointer;
 }
 
 .glass-navbar-info {
@@ -56,6 +58,7 @@
     font-size: 14px;
     font-weight: 100;
     text-align: center;
+    font-family: glass.$font-sub;
 
     margin-left: 3px;
 
@@ -137,10 +140,39 @@
 }
 
 .glass-navbar-link {
-    margin: 1px; 
-    margin-left: 5px;
+    margin-left: 4px;
+
+    color: glass.$color-text;
+    
+
+    text-decoration: none;
+
+    font-size: 22pt;
+    font-family: glass.$font-sub;
+
+    padding: 5px;
+
+    cursor: pointer;
+}
+
+.glass-navbar-link:hover {
+    scale: 1.1;
 }
 
 .glass-navbar-title-start-info {
     margin: 2px;
+
+    font-family: glass.$font-sub;
+}
+
+.glass-navbar-guard {
+    display: block;
+
+    width: 2px;
+    min-width: 2px;
+    height: 50px;
+
+    padding: 0;
+    margin: 0;
+    margin-left: 6px;
 }

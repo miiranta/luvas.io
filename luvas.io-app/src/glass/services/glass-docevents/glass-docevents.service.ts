@@ -21,6 +21,9 @@ export class GlassDoceventsService {
     window.addEventListener('wheel', (event) => {
       this.scrollCallbacks.forEach(callback => { callback(event); });
     });
+    window.addEventListener('touchmove', (event) => {
+      this.scrollCallbacks.forEach(callback => { callback(event); });
+    });
 
     // Window resize event
     window.addEventListener('resize', (event) => {

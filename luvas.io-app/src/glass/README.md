@@ -62,11 +62,12 @@ Adds a navigation bar.
 [config] =
 ```typescript
 {
-    title_start: string,
-    title_end: string,
+    title_start: string[],
+    title_end: string[],
     links: [[{
         title: string,
-        link: string
+        link: string,
+        padding: string, // in px
     }]]
 }
 ```
