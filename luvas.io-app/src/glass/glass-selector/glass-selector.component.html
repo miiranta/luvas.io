@@ -1,12 +1,43 @@
 <div class="glass-selector-main" [ngStyle]="{'width': config.width, 'height': config.height}">
 <div class="glass-selector-main-sub f f-col f-center">
 
-    <div class="glass-selector-main-header f f-col f-center">
+    <div class="glass-selector-main-header f f-row f-center">
     @if (config.title != null) {
         <div class="glass-selector-title f f-col f-center">
             <h1>{{config.title}}</h1>
         </div>
     }
+    
+        <div class="glass-selector-tagpicker f f-col f-center">
+
+            <button class="glass-selector-tagpicker-button" (click)="picker_open = !picker_open">Select tags...</button>
+            
+            @if (picker_open) {
+                <div class="glass-selector-tagpicker-options f f-col f-center" #id_picker>
+
+                    @for (item of tagAndFreq; track item) {
+
+                        @if (item.tag != "ALL") {
+                            <div class="glass-selector-tagpicker-item f f-row f-center">
+                                <p class="glass-selector-tagpicker-option">{{item.tag + " " + item.freq}}</p>
+                                <input type="checkbox" [checked]="item.selected" [name]="item.tag" class="glass-selector-tagpicker-checkbox" #id_picker_checkbox (click)="picker_update_selection(id_picker, id_picker_checkbox)">
+                            </div>
+                        }
+                        @else
+                        {
+                            <div class="glass-selector-tagpicker-item f f-row f-center">
+                                <p class="glass-selector-tagpicker-option">{{item.tag}}</p>
+                                <input type="checkbox" [checked]="item.selected" [name]="item.tag" class="glass-selector-tagpicker-checkbox" #id_picker_checkbox (click)="picker_update_selection(id_picker, id_picker_checkbox)">
+                            </div>
+                        }
+                    }
+
+                </div>
+            }
+
+
+        </div>
+    
     </div>
 
     <div class="glass-selector-main-items"  >
@@ -16,17 +47,19 @@
         <div style="height: 10vh;"></div>
 
         @for (item of items; track item) {
-            <div class="glass-selector-item f f-col f-center shadow" #id (mouseenter)="animateFadeIn(id)" (mouseleave)="animateFadeOut(id)" (click)="centerItem(id, simplebar_list_instance)">
-                <div class="glass-selector-item-wrap f f-col f-center">
+            @if (item.show) {
+                <div class="glass-selector-item f f-col f-center shadow" #id (mouseenter)="animateFadeIn(id)" (mouseleave)="animateFadeOut(id)" (click)="centerItem(id, simplebar_list_instance)">
+                    <div class="glass-selector-item-wrap f f-col f-center">
 
-                    <h1>{{item.title}}</h1>
-                    <p>{{item.description}}</p>
-                    <p>{{item.tags}}</p>
+                        <h1>{{item.title}}</h1>
+                        <p>{{item.description}}</p>
+                        <p>{{item.tags}}</p>
 
-                    <a [href]="item.link">See more...</a>
-                
+                        <a [href]="item.link">See more...</a>
+                    
+                    </div>
                 </div>
-            </div>
+            }
         }
 
         <div style="height: 30vh;"></div>

@@ -56,7 +56,8 @@ ngx-simplebar {
 
   overflow: hidden;
 
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 
   margin: 50px;
   margin-top: 15px;
@@ -88,7 +89,15 @@ ngx-simplebar {
   padding: 0;
 }
 
-::ng-deep .simplebar-scrollbar::before {
-  background-color: rgba(255, 255, 255, 0.6) !important;
+.glass-selector-tagpicker-item {
+  height: 20px;
 }
 
+.glass-selector-tagpicker {
+  margin: 0px;
+  padding: 0px;
+}
+
+::ng-deep .simplebar-scrollbar::before {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}

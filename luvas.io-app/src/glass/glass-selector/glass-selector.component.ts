@@ -10,12 +10,19 @@ interface GlassSelectorItems {
   img_src: string;
   link: string;
   tags?: string[];
+  show?: boolean;
 }
 
 interface GlassSelectorConfig {
   title: string;
   width?: string;
   height?: string;
+}
+
+interface TagAndFreq {
+  tag: string;
+  freq: number;
+  selected?: boolean;
 }
 
 @Component({
@@ -34,10 +41,13 @@ export class GlassSelectorComponent {
 
   private runningJump = false;
 
-  tagAndFreq: { [key: string]: number } = {};
+  private searchTags: string[] = [];
+  tagAndFreq: TagAndFreq[] = [];
+  picker_open = false;
 
   ngOnInit() {
     this.processTags(this.items);
+    this.items_update_visibility();
   }
 
   ngAfterViewInit() {
@@ -154,6 +164,7 @@ export class GlassSelectorComponent {
 
   async animateCenterPop(element: HTMLElement, force: any = undefined){
     if(this.runningJump) return;
+    if(!element) return;
     
     const elem_height = element.getBoundingClientRect().height;
 
@@ -231,11 +242,23 @@ export class GlassSelectorComponent {
     });
 
     // Count frequency
-    items.forEach((item) => {
+    this.tagAndFreq = items.reduce((acc: TagAndFreq[], item) => {
       item.tags?.forEach((tag) => {
-        this.tagAndFreq[tag] = this.tagAndFreq[tag] ? this.tagAndFreq[tag] + 1 : 1;
+        const index = acc.findIndex((tagAndFreq) => tagAndFreq.tag === tag);
+        if(index === -1) acc.push({ tag, freq: 1, selected: true });
+        else acc[index].freq++;
       });
-    });
+      return acc;
+    }, []);
+
+    // Add ALL tag
+    this.tagAndFreq.push({ tag: 'ALL', freq: items.length, selected: true });
+
+    // Add tags to searchTags
+    this.searchTags = this.tagAndFreq.map((tagAndFreq) => tagAndFreq.tag);
+
+    // Sort by frequency
+    this.tagAndFreq.sort((a, b) => b.freq - a.freq);
 
   }
 
@@ -250,7 +273,72 @@ export class GlassSelectorComponent {
     // Remove duplicates
     tags = tags.filter((tag, index) => tags.indexOf(tag) === index);
 
+    // 0 length > add OTHER
+    if(tags.length === 0) tags.push('OTHER');
+
     return tags;
+  }
+
+  picker_update_selection(picker: HTMLElement, checkbox: HTMLInputElement){
+    
+    // Check all tags
+    let tags = picker.querySelectorAll('.glass-selector-tagpicker-item input');
+
+    // Is checkbox ALL?
+    if(checkbox.name === 'ALL'){
+
+      // Check all tags equal to ALL
+      tags.forEach((tag) => {
+        (tag as HTMLInputElement).checked = checkbox.checked;
+      });
+
+    }
+
+    // It´s not ALL
+    else {
+      let tagAll = Array.from(tags).filter((tag) => (tag as HTMLInputElement).name === 'ALL')[0];
+      let tags_minus_all = Array.from(tags).filter((tag) => (tag as HTMLInputElement).name !== 'ALL');
+
+      const all_tags_selected = Array.from(tags_minus_all).every((tag) => (tag as HTMLInputElement).checked);
+      if(all_tags_selected) {
+        // If every tag is checked (except ALL), check ALL
+        (tagAll as HTMLInputElement).checked = true;
+      }
+      else {
+        // If not every tag is checked (except ALL), uncheck ALL
+        (tagAll as HTMLInputElement).checked = false;
+      }
+      
+    }
+
+    // Update selection (tagAndFreq -- where the checkboxes state is saved) 
+    tags.forEach((tag) => {
+      const name = (tag as HTMLInputElement).name;
+      const checked = (tag as HTMLInputElement).checked;
+      this.tagAndFreq = this.tagAndFreq.map((tagAndFreq) => {
+        if(tagAndFreq.tag === name) tagAndFreq.selected = checked;
+        return tagAndFreq;
+      });
+    });
+
+    // Update search tags index
+    tags.forEach((tag) => {
+      const name = (tag as HTMLInputElement).name;
+      const checked = (tag as HTMLInputElement).checked;
+
+      if(checked && this.searchTags.indexOf(name) === -1) this.searchTags.push(name);
+      else if(!checked && this.searchTags.indexOf(name) !== -1) this.searchTags = this.searchTags.filter((tag) => tag !== name);
+    });
+
+    // Update visibility
+    this.items_update_visibility();
+  }
+
+  items_update_visibility(){
+    this.items = this.items.map((item) => {
+      item.show = this.searchTags.some((tag) => item.tags?.includes(tag)) || this.searchTags.includes('ALL');
+      return item;
+    });
   }
 
 }
