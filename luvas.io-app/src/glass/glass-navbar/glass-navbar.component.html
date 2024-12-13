@@ -1,0 +1,66 @@
+<div class="f f-row f-center w100 glass-navbar-margin"></div>
+
+<div class="f f-col f-center w100 glass-navbar-main shadow glass" #glassNavbar>
+
+    <div class="f f-row f-center w100 glass-navbar-info">
+
+        <div class="f f-row f-start w100" style="padding-left: 10px; padding-top: 4px;">
+            <div class="f f-col f-center" style="height: 60px;">
+                <h2 class="glass-navbar-title-start-info">Welcomeeeeeeeee!</h2>
+                <h2 class="glass-navbar-title-start-info">Welcomeeeeeeeee!</h2>
+            </div>
+
+            <div class="f f-row f-center" style="height: 60px; margin-left: 5px;">
+                <div class="line-break-vertical" style="margin: 2px; height: 40px;"></div>
+                <p class="glass-navbar-link">Link</p>
+                <p class="glass-navbar-link">Link</p>
+            </div>
+
+            <div class="f f-row f-center" style="height: 60px; margin-left: 5px;">
+                <div class="line-break-vertical" style="margin: 2px; height: 40px;"></div>
+                <p class="glass-navbar-link">Link</p>
+                <p class="glass-navbar-link">Link</p>
+            </div>
+
+        </div>
+
+        <div class="glass-navbar-title-mid-wrap">
+        <div class="glass-navbar-title-mid-wrap2">    
+            <h2 class="glass-navbar-title-mid"></h2>
+        </div>
+        </div>
+
+        <div class="f f-row f-end w100">
+            <div class="f f-col f-center" style="height: 60px; padding-right: 10px;">
+            <h2 class="glass-navbar-title-end-info" style="margin: 2px;">Luvas.io</h2>
+            <h2 class="glass-navbar-title-end-info" style="margin: 2px;">Luvas.io</h2>
+            </div>
+        </div>
+
+
+    </div>   
+
+    <div class="f f-row f-center w100 glass-navbar-sub shadow glass">
+
+        <div class="f f-row f-start w100">
+            <h2 class="glass-navbar-title-start" style="margin-left:4px;" (click)="navigateToPart(-1);">luvas.io</h2>
+            @if (route_parts.length > 0){
+                @for (item of route_parts; track item){
+                    <h2 class="glass-navbar-title-start" (click)="navigateToPart($index);">{{item}}</h2>
+                }
+            }
+        </div>
+
+        <div class="glass-navbar-title-mid-wrap">
+        <div class="glass-navbar-title-mid-wrap2">    
+            <h2 class="glass-navbar-title-mid"></h2>
+        </div>
+        </div>
+
+        <div class="f f-row f-end w100" style="padding-right: 10px;">
+            <h2 class="glass-navbar-title-end" (click)="toggleNav(glassNavbar)">❯</h2>
+        </div>
+
+    </div>  
+
+</div>

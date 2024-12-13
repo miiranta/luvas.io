@@ -17,6 +17,11 @@ export class GlassDoceventsService {
       this.mouseClickCallbacks.forEach(callback => { callback(event); });
     });
 
+    // Scroll event
+    window.addEventListener('wheel', (event) => {
+      this.scrollCallbacks.forEach(callback => { callback(event); });
+    });
+
     // Window resize event
     window.addEventListener('resize', (event) => {
       this.windowResizeCallbacks.forEach(callback => { callback(event); });
@@ -26,6 +31,7 @@ export class GlassDoceventsService {
 
   private mouseMoveCallbacks: ((event: any) => void)[] = [];
   private mouseClickCallbacks: ((event: any) => void)[] = [];
+  private scrollCallbacks: ((event: any) => void)[] = [];
   private windowResizeCallbacks: ((event: any) => void)[] = [];
 
   addCallbackToMouseMove(callback: (event: any) => void) {
@@ -34,6 +40,10 @@ export class GlassDoceventsService {
 
   addCallbackToMouseClick(callback: (event: any) => void) {
     this.mouseClickCallbacks.push(callback);
+  }
+
+  addCallbackToScroll(callback: (event: any) => void) {
+    this.scrollCallbacks.push(callback);
   }
 
   addCallbackToWindowResize(callback: (event: any) => void) {

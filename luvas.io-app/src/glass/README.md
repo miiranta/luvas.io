@@ -56,5 +56,17 @@ Adds a selection menu.
 }
 ```
 
+### \<glass-navbar>
+Adds a navigation bar.
 
-
+[config] =
+```typescript
+{
+    title_start: string,
+    title_end: string,
+    links: [[{
+        title: string,
+        link: string
+    }]]
+}
+```

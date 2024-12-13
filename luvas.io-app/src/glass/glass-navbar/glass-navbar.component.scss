@@ -1,0 +1,146 @@
+@use "./../glass.scss" as glass;
+@use "sass:color";
+
+.glass-navbar-main {
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+
+    z-index: 1000;
+}
+
+.glass-navbar-sub {
+    background-color: glass.$color-shadow;
+    
+    height: 20px;
+    width: 100vw;
+
+    position: fixed;
+    top: 0px;
+
+    opacity: 1;
+    
+    z-index: 1000;
+}
+
+.glass-navbar-info {
+    $red: color.channel(glass.$color-shadow, "red", $space: rgb);
+    $green: color.channel(glass.$color-shadow, "green", $space: rgb);
+    $blue: color.channel(glass.$color-shadow, "blue", $space: rgb);
+
+    $shift: -15;
+
+    background-color: rgb(calc(#{$red} - $shift), calc(#{$green} - $shift), calc(#{$blue} - $shift));
+    height: 60px;
+
+    padding-bottom: 2px;
+
+    position: fixed;
+    top: -60px;
+}
+
+.glass-navbar-margin {
+    height: 20px;
+    width: 100vw;
+}
+
+.glass-navbar-title-start {
+    color: glass.$color-text;
+
+    opacity: 1;
+
+    word-break: keep-all;
+    white-space: nowrap;
+
+    font-size: 14px;
+    font-weight: 100;
+    text-align: center;
+
+    margin-left: 3px;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.glass-navbar-title-start:hover {
+    transition: 0.3s;
+
+    color: rgb(242, 0, 255);
+}
+
+.glass-navbar-title-mid-wrap {
+    position: relative;
+
+    width: 0;
+    height: 0;
+}
+
+.glass-navbar-title-mid-wrap2 {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.glass-navbar-title-end {
+    color: glass.$color-text;
+
+    opacity: 1;
+
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+
+    transform: rotate(90deg);
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.glass-navbar-title-end:hover {
+    color: rgb(242, 0, 255);
+
+    transition: 0.3s;
+}
+
+.glass-navbar-title-mid {
+    color: glass.$color-text;
+
+    opacity: 1;
+
+    font-size: 12px;
+    font-weight: 100;
+    text-align: center;
+
+    margin-right: 3px;
+
+    letter-spacing: 1.5px;
+}
+
+.glass-navbar-title-end-info {
+    color: glass.$color-text;
+
+    opacity: 1;
+
+    font-size: 12px;
+    font-weight: 100;
+    text-align: center;
+
+    margin-right: 3px;
+
+    letter-spacing: 1.5px;
+}
+
+.glass-navbar-link {
+    margin: 1px; 
+    margin-left: 5px;
+}
+
+.glass-navbar-title-start-info {
+    margin: 2px;
+}
