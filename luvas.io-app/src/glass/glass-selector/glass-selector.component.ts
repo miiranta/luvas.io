@@ -1,5 +1,6 @@
 import { Component, Input, NgModule, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 
 import { GlassDoceventsService } from '../services/glass-docevents/glass-docevents.service';
 import { SimplebarAngularComponent, SimplebarAngularModule } from 'simplebar-angular';
@@ -28,13 +29,14 @@ interface TagAndFreq {
 
 @Component({
   selector: 'glass-selector',
-  imports: [SimplebarAngularModule, CommonModule],
+  imports: [SimplebarAngularModule, CommonModule, RouterModule],
   templateUrl: './glass-selector.component.html',
   styleUrl: './glass-selector.component.scss'
 })
 export class GlassSelectorComponent {
 
   private eventService: GlassDoceventsService = inject(GlassDoceventsService);
+  private router: Router = inject(Router);
 
   @Input() items: GlassSelectorItems[] = [];
   @Input() config: GlassSelectorConfig = { title: 'Title', width: '100%', height: '100%' };
@@ -43,6 +45,7 @@ export class GlassSelectorComponent {
   
   private simplebar_scroll_instance: any;
   private picker_instance: any;
+  private selected_instance: any;
 
   private runningJump = false;
 
@@ -61,6 +64,11 @@ export class GlassSelectorComponent {
     // Add click callback for picker_update_close
     this.eventService.addCallbackToMouseClick((event: any) => {
       return this.picker_update_close(event);
+    });
+
+    // Add click callback for onSelectedInstanceClick
+    this.eventService.addCallbackToMouseClick((event: any) => {
+      return this.onSelectedInstanceClick(event);
     });
 
     // Add resize callback
@@ -218,6 +226,7 @@ export class GlassSelectorComponent {
         (item as HTMLElement).style.opacity = '1';
         (item as HTMLElement).style.zIndex = '1';
         if(force == undefined) this.animateFadeIn(item as HTMLElement);
+        this.selected_instance = item;
       } 
       else if (index === center_item - 1 || index === center_item + 1){
         (item as HTMLElement).style.scale = '0.9';
@@ -401,10 +410,8 @@ export class GlassSelectorComponent {
     const mouse_x = event.clientX;
     const mouse_y = event.clientY;
 
-    const picker_pos = picker.getBoundingClientRect();
-
     // Is the mouse inside the picker?
-    let is_inside = (mouse_x >= picker_pos.left && mouse_x <= picker_pos.right && mouse_y >= picker_pos.top && mouse_y <= picker_pos.bottom);
+    let is_inside = this.isInViewport(picker, mouse_x, mouse_y);
     if(is_inside) return;
 
     this.picker_enable_outside_click = false;
@@ -433,6 +440,35 @@ export class GlassSelectorComponent {
       this.animateFadeOut(item as HTMLElement);
     });
 
+  }
+
+  onSelectedInstanceClick(event: any){
+    if(!this.selected_instance) return;
+
+    const click_is_in = this.isInViewport(this.selected_instance, event.clientX, event.clientY);
+    if(!click_is_in) return;
+
+    // Get the link
+    const link = this.selected_instance.querySelector('.glass-selector-item-link');
+    
+    // Click the link
+    // Thats the same as clicking "see more", it will run navigateTo
+    link.click();
+
+  }
+
+  isInViewport(element: HTMLElement, x: number, y: number) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <= y &&
+      rect.bottom >= y &&
+      rect.left <= x &&
+      rect.right >= x
+    );
+  }
+
+  navigateTo(link: string){
+    this.router.navigate([link]);
   }
 
 }
