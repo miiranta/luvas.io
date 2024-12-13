@@ -1,6 +1,7 @@
-import { Component, Input, NgModule, ViewChild } from '@angular/core';
+import { Component, Input, NgModule, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { GlassDoceventsService } from '../services/glass-docevents/glass-docevents.service';
 import { SimplebarAngularComponent, SimplebarAngularModule } from 'simplebar-angular';
 import anime from 'animejs';
 
@@ -33,21 +34,39 @@ interface TagAndFreq {
 })
 export class GlassSelectorComponent {
 
+  private eventService: GlassDoceventsService = inject(GlassDoceventsService);
+
   @Input() items: GlassSelectorItems[] = [];
   @Input() config: GlassSelectorConfig = { title: 'Title', width: '100%', height: '100%' };
 
   @ViewChild('simplebar_list_instance') simplebar_list_instance: any;
+  
   private simplebar_scroll_instance: any;
+  private picker_instance: any;
 
   private runningJump = false;
 
   private searchTags: string[] = [];
   tagAndFreq: TagAndFreq[] = [];
+
   picker_open = false;
+  private picker_enable_outside_click = false;
 
   ngOnInit() {
+
+    //
     this.processTags(this.items);
     this.items_update_visibility();
+
+    // Add click callback for picker_update_close
+    this.eventService.addCallbackToMouseClick((event: any) => {
+      return this.picker_update_close(event);
+    });
+
+    // Add resize callback
+    this.eventService.addCallbackToWindowResize((event: any) => {
+      return this.onWindowResize(event);
+    });
   }
 
   ngAfterViewInit() {
@@ -234,6 +253,24 @@ export class GlassSelectorComponent {
 
   }
 
+  centerTop(simplebar: any){
+    this.runningJump = true;
+
+    const simplebar_scroll = simplebar.SimpleBar.getScrollElement();
+    const target_scrolltop = 0;
+
+    anime({
+      targets: simplebar_scroll,
+      scrollTop: target_scrolltop,
+      duration: 200,
+      easing: 'easeInOutQuad',
+      complete: () => {
+        this.runningJump = false;
+        this.animateCenterPop(simplebar_scroll);
+      }
+    });
+  }
+
   processTags(items: GlassSelectorItems[]){
       
     // Process tags
@@ -332,6 +369,42 @@ export class GlassSelectorComponent {
 
     // Update visibility
     this.items_update_visibility();
+
+    //Center top
+    this.centerTop(this.simplebar_list_instance);
+  }
+
+  async picker_update_open(picker_wrap: HTMLElement){
+    this.picker_open = true;
+
+    // Wait for the picker to be rendered
+    while(!picker_wrap.querySelector('.glass-selector-tagpicker-options')) await new Promise(resolve => setTimeout(resolve, 100));
+    
+    // Get picker instance
+    this.picker_instance = picker_wrap.querySelector('.glass-selector-tagpicker-options');
+
+    //
+    this.picker_enable_outside_click = true;
+  }
+  
+  picker_update_close(event: any) {
+    if(!this.picker_enable_outside_click) return;
+    if(!this.picker_open) return;
+    if(!this.picker_instance) return;
+
+    const picker = this.picker_instance;
+    
+    const mouse_x = event.clientX;
+    const mouse_y = event.clientY;
+
+    const picker_pos = picker.getBoundingClientRect();
+
+    // Is the mouse inside the picker?
+    let is_inside = (mouse_x >= picker_pos.left && mouse_x <= picker_pos.right && mouse_y >= picker_pos.top && mouse_y <= picker_pos.bottom);
+    if(is_inside) return;
+
+    this.picker_enable_outside_click = false;
+    this.picker_open = false;
   }
 
   items_update_visibility(){
@@ -339,6 +412,23 @@ export class GlassSelectorComponent {
       item.show = this.searchTags.some((tag) => item.tags?.includes(tag)) || this.searchTags.includes('ALL');
       return item;
     });
+  }
+
+  // This is a small graphics bug fix
+  onWindowResize(event: any){
+    if(!this.simplebar_list_instance) return;
+
+    // Get items
+    let items = this.simplebar_list_instance.SimpleBar.getScrollElement().querySelectorAll('.glass-selector-item');
+
+    // Filter the ones with SVG
+    let items_with_svg = Array.from(items).filter((item) => (item as HTMLElement).querySelector('svg'));
+
+    // Fade out the SVGs
+    items_with_svg.forEach((item) => {
+      this.animateFadeOut(item as HTMLElement);
+    });
+
   }
 
 }

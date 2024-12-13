@@ -43,16 +43,19 @@ export class GlassBackgroundComponent {
 
     // Add mouse follow event
     if(this.config.mouse_follow) {
-      this.eventService.addCallbackToMouseMove((x: number, y: number) => {
-        this.updateAnimation(x, y);
+      this.eventService.addCallbackToMouseMove((event) => {
+        this.updateAnimation(event);
       });
     }
 
     this.updateRadialGradient(0, 0);
   }
 
-  updateAnimation(x: number, y: number): void {
+  updateAnimation(event: any): void {
     const now = Date.now();
+
+    const x = event.clientX;
+    const y = event.clientY;
 
     if(now - this.last_animation_update < this.update_cooldown_ms) {
       return;

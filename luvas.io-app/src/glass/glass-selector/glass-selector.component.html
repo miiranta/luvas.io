@@ -9,9 +9,9 @@
         </div>
         }
     
-        <div class="glass-selector-tagpicker f f-col f-center">
+        <div class="glass-selector-tagpicker f f-col f-center" #id_picker_wrap>
 
-            <button class="glass-selector-tagpicker-button btn-square" (click)="picker_open = !picker_open">
+            <button class="glass-selector-tagpicker-button btn-square" (click)="picker_update_open(id_picker_wrap);">
                 <div class="f f-row f-center">
                 <div class="f f-col f-center">
                 <img src="glass-assets/icons/filter-white.png" width="28px">

@@ -9,15 +9,35 @@ export class GlassDoceventsService {
 
     // Mouse move event
     window.addEventListener('mousemove', (event) => {
-      this.mouseMoveCallbacks.forEach(callback => { callback(event.clientX, event.clientY); });
+      this.mouseMoveCallbacks.forEach(callback => { callback(event); });
+    });
+
+    // Mouse click event
+    window.addEventListener('click', (event) => {
+      this.mouseClickCallbacks.forEach(callback => { callback(event); });
+    });
+
+    // Window resize event
+    window.addEventListener('resize', (event) => {
+      this.windowResizeCallbacks.forEach(callback => { callback(event); });
     });
 
   }
 
-  private mouseMoveCallbacks: ((x: number, y: number) => void)[] = [];
+  private mouseMoveCallbacks: ((event: any) => void)[] = [];
+  private mouseClickCallbacks: ((event: any) => void)[] = [];
+  private windowResizeCallbacks: ((event: any) => void)[] = [];
 
-  addCallbackToMouseMove(callback: (x: number, y: number) => void) {
+  addCallbackToMouseMove(callback: (event: any) => void) {
     this.mouseMoveCallbacks.push(callback);
+  }
+
+  addCallbackToMouseClick(callback: (event: any) => void) {
+    this.mouseClickCallbacks.push(callback);
+  }
+
+  addCallbackToWindowResize(callback: (event: any) => void) {
+    this.windowResizeCallbacks.push(callback);
   }
 
 }
