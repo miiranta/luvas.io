@@ -16,8 +16,8 @@
                 <div class="f f-row f-center" style="height: 60px;">
                     <div class="line-break-vertical glass-navbar-guard"></div>
                     @for (item of group; track item){
-                        <div class="f f-col f-center h100" style="padding: {{item.padding}};">
-                        <a class="glass-navbar-link" (click)="navigateTo(item.link);">{{item.title}}</a>
+                        <div class="f f-col f-center h100" [style.padding]="item.padding">
+                        <a class="glass-navbar-link" (click)="redirectService.navigateTo(item.link);">{{item.title}}</a>
                         </div>
                     }
                 </div>

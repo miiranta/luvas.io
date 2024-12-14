@@ -1,7 +1,7 @@
 import { Component, inject, Input, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { GlassDoceventsService } from '../services/glass-docevents/glass-docevents.service';
+import { GlassRedirectService } from '../services/glass-redirect/glass-redirect.service';
 
 import anime from 'animejs';
 
@@ -22,8 +22,9 @@ interface NavBarConfig {
   styleUrl: './glass-navbar.component.scss'
 })
 export class GlassNavbarComponent {
-  router: Router = inject(Router);
+  
   private eventService: GlassDoceventsService = inject(GlassDoceventsService);
+  redirectService: GlassRedirectService = inject(GlassRedirectService);
 
   URL: string;
 
@@ -50,7 +51,7 @@ export class GlassNavbarComponent {
   nav_animating: boolean = false;
 
   constructor() {
-    this.URL = window.location.href;
+    this.URL = this.redirectService.getURL();
     this.URL = this.URL.split('://')[1];
     this.URL = this.URL.split('/')[0];
   }
@@ -64,7 +65,7 @@ export class GlassNavbarComponent {
   }
 
   renderRoutes() {
-    const route = this.router.url;
+    const route = this.redirectService.getRoute();
 
     // Break the route into parts
     this.route_parts = route.split('/');
@@ -76,13 +77,12 @@ export class GlassNavbarComponent {
     this.route_parts = this.route_parts.map((part) => {
       return '/' + part;
     });
-
   }
 
   navigateToPart(route_idx: number) {
     
     if(route_idx == -1) {
-      this.router.navigate(['/']);
+      this.redirectService.navigateTo('/');
     }
 
     else {
@@ -90,14 +90,9 @@ export class GlassNavbarComponent {
       for(let i = 0; i <= route_idx; i++) {
         route += this.route_parts[i];
       }
-      this.router.navigate([route]);
+      this.redirectService.navigateTo(route);
     }
 
-
-  }
-
-  navigateTo(route: string) {
-    this.router.navigate([route]);
   }
 
   toggleNav(nav: HTMLElement) {
@@ -128,8 +123,6 @@ export class GlassNavbarComponent {
 
     }else{
       this.nav_animating = true;
-
-      console.log('closing nav');
 
       // Transform 180 glass-navbar-title-end
       anime({

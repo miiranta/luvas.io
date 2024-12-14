@@ -1,9 +1,11 @@
 import { Component, Input, NgModule, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { GlassDoceventsService } from '../services/glass-docevents/glass-docevents.service';
-import { SimplebarAngularComponent, SimplebarAngularModule } from 'simplebar-angular';
+import { GlassRedirectService } from '../services/glass-redirect/glass-redirect.service';
+
+import { SimplebarAngularModule } from 'simplebar-angular';
 import anime from 'animejs';
 
 interface GlassSelectorItems {
@@ -36,7 +38,7 @@ interface TagAndFreq {
 export class GlassSelectorComponent {
 
   private eventService: GlassDoceventsService = inject(GlassDoceventsService);
-  private router: Router = inject(Router);
+  redirectService: GlassRedirectService = inject(GlassRedirectService);
 
   @Input() items: GlassSelectorItems[] = [];
   @Input() config: GlassSelectorConfig = { title: 'Title', width: '100%', height: '100%' };
@@ -425,8 +427,7 @@ export class GlassSelectorComponent {
     });
   }
 
-  // This is a small graphics bug fix
-  onWindowResize(event: any){
+  onWindowResize(event: any){// This is a small graphics bug fix
     if(!this.simplebar_list_instance) return;
 
     // Get items
@@ -468,10 +469,6 @@ export class GlassSelectorComponent {
       rect.left <= x &&
       rect.right >= x
     );
-  }
-
-  navigateTo(link: string){
-    this.router.navigate([link]);
   }
 
 }
