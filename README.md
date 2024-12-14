@@ -4,6 +4,10 @@
 
 Project's frontend. Created with Angular.
 
+#### Setup
+
+> Check luvas.io-app/README.md for more information.
+
 ## API
 
-Project's backend. Created with Node.js / Express.
+Project's backend.
