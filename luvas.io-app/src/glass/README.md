@@ -35,8 +35,8 @@ Adds a nice background.
 Adds a loading screen.
 Use the redirect service's navigateTo method to have this integrated.
 
-Better results if you put it in the app component.
-In each other page, call glass-loading service showLoadingScreen() inside ngAfterViewInit().
+Better results if you put it in the app component instead of in each page.
+- In that case, in each other page, call glass-loading service showLoadingScreen() inside ngAfterViewInit().
 ```typescript
 import { GlassLoadingService } from 'services/glass-loading/glass-loading.service';
 
@@ -46,10 +46,11 @@ ngAfterViewInit(){
     this.loadingService.hideLoadingScreen();
 }
 ```
-Or you can use this component in each page: 
+- OR, in each other page, you can use this component: 
 ```html
 <glass-loading-close-on-view-init>
 ```
+- OR you use nothing. It should work anyway. At least for redirects using the redirect service.
 
 ### \<glass-selector>
 Adds a selection menu.
