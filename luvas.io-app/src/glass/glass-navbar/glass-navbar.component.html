@@ -48,7 +48,7 @@
     <div class="f f-row f-center w100 glass-navbar-sub shadow glass">
 
         <div class="f f-row f-start">
-            <h2 class="glass-navbar-title-start" style="margin-left:4px;" (click)="navigateToPart(-1);">luvas.io</h2>
+            <h2 class="glass-navbar-title-start" style="margin-left:4px;" (click)="navigateToPart(-1);">{{URL}}</h2>
             @if (route_parts.length > 0){
                 @for (item of route_parts; track item){
                     <h2 class="glass-navbar-title-start" (click)="navigateToPart($index);">{{item}}</h2>

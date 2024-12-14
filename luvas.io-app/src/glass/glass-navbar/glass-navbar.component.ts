@@ -25,6 +25,8 @@ export class GlassNavbarComponent {
   router: Router = inject(Router);
   private eventService: GlassDoceventsService = inject(GlassDoceventsService);
 
+  URL: string;
+
   @ViewChild('glassNavbar') glassNavbar!: any;
 
   @Input() config: NavBarConfig = {
@@ -47,6 +49,12 @@ export class GlassNavbarComponent {
   nav_open: boolean = false;
   nav_animating: boolean = false;
 
+  constructor() {
+    this.URL = window.location.href;
+    this.URL = this.URL.split('://')[1];
+    this.URL = this.URL.split('/')[0];
+  }
+
   ngOnInit() {
     this.renderRoutes();
 
@@ -56,7 +64,7 @@ export class GlassNavbarComponent {
   }
 
   renderRoutes() {
-    const route = "/portifolio/luvas-io";
+    const route = this.router.url;
 
     // Break the route into parts
     this.route_parts = route.split('/');
