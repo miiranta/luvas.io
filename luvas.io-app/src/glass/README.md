@@ -31,6 +31,21 @@ Adds a nice background.
     gradient: "" | "radial"
 }
 ```
+### \<glass-loading>
+Adds a loading screen.
+Use the redirect service's navigateTo method to have this integrated.
+
+Better results if you put it in the app component.
+In each other page, call glass-loading service showLoadingScreen() inside ngAfterViewInit().
+```typescript
+import { GlassLoadingService } from 'services/glass-loading/glass-loading.service';
+
+private loadingService: GlassLoadingService = inject(GlassLoadingService);
+
+ngAfterViewInit(){
+    this.loadingService.hideLoadingScreen();
+}
+```
 
 ### \<glass-selector>
 Adds a selection menu.

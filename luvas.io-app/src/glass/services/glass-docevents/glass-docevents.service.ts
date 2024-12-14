@@ -9,25 +9,35 @@ export class GlassDoceventsService {
 
     // Mouse move event
     window.addEventListener('mousemove', (event) => {
-      this.mouseMoveCallbacks.forEach(callback => { callback(event); });
+      this.mouseMoveCallbacks.forEach( (callback) => { 
+        if(callback !== null) callback(event);
+      });
     });
 
     // Mouse click event
     window.addEventListener('click', (event) => {
-      this.mouseClickCallbacks.forEach(callback => { callback(event); });
+      this.mouseClickCallbacks.forEach(callback => { 
+        if(callback !== null) callback(event);
+      });
     });
 
     // Scroll event
     window.addEventListener('wheel', (event) => {
-      this.scrollCallbacks.forEach(callback => { callback(event); });
+      this.scrollCallbacks.forEach(callback => { 
+        if(callback !== null) callback(event);
+      });
     });
     window.addEventListener('touchmove', (event) => {
-      this.scrollCallbacks.forEach(callback => { callback(event); });
+      this.scrollCallbacks.forEach(callback => { 
+        if (callback !== null) callback(event);
+      });
     });
 
     // Window resize event
     window.addEventListener('resize', (event) => {
-      this.windowResizeCallbacks.forEach(callback => { callback(event); });
+      this.windowResizeCallbacks.forEach(callback => { 
+        if(callback !== null) callback(event);
+      });
     });
 
   }

@@ -429,9 +429,12 @@ export class GlassSelectorComponent {
 
   onWindowResize(event: any){// This is a small graphics bug fix
     if(!this.simplebar_list_instance) return;
+    if(!this.simplebar_list_instance.SimpleBar) return;
+
+    const sb_scroll_elem = this.simplebar_list_instance.SimpleBar.getScrollElement();
 
     // Get items
-    let items = this.simplebar_list_instance.SimpleBar.getScrollElement().querySelectorAll('.glass-selector-item');
+    let items = sb_scroll_elem.querySelectorAll('.glass-selector-item');
 
     // Filter the ones with SVG
     let items_with_svg = Array.from(items).filter((item) => (item as HTMLElement).querySelector('svg'));

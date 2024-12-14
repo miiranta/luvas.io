@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { GlassBackgroundComponent } from './../../glass/glass-background/glass-background.component';
 import { GlassSelectorComponent } from "../../glass/glass-selector/glass-selector.component";
 import { GlassNavbarComponent } from './../../glass/glass-navbar/glass-navbar.component';
+
+import { GlassLoadingService } from './../../glass/services/glass-loading/glass-loading.service';
 
 @Component({
   selector: 'portifolio-page',
@@ -11,5 +13,11 @@ import { GlassNavbarComponent } from './../../glass/glass-navbar/glass-navbar.co
   styleUrl: './portifolio.component.scss'
 })
 export class PortifolioComponent {
+
+  private loadingService: GlassLoadingService = inject(GlassLoadingService);
+  
+  ngAfterViewInit(){
+    this.loadingService.hideLoadingScreen();
+  }
 
 }
