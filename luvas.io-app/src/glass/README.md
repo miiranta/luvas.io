@@ -46,6 +46,10 @@ ngAfterViewInit(){
     this.loadingService.hideLoadingScreen();
 }
 ```
+Or you can use this component in each page: 
+```html
+<glass-loading-close-on-view-init>
+```
 
 ### \<glass-selector>
 Adds a selection menu.

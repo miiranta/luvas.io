@@ -23,7 +23,11 @@ export class GlassRedirectService {
     this.loadingService.showLoadingScreen();
 
     setTimeout(() => {
-      this.router.navigate([url]);
+
+      this.router.navigate([url])
+      .then(() => {this.loadingService.hideLoadingScreen();})
+      .catch((error) => {this.loadingService.hideLoadingScreen();});
+
     }, 150);
   }
 
