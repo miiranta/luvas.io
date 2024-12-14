@@ -1,0 +1,73 @@
+<glass-background 
+[config]=
+"{
+    type: '', 
+    mouse_follow: false, 
+    gradient: 'radial'
+}"
+>
+</glass-background>
+
+
+<glass-navbar
+[config]=
+"{
+    title_start: ['luvas.io'],
+    title_end: ['Created by', 'Lucas Miranda'],
+    links: [
+        [
+            {title: '🏠', link: '/', padding: '0 0 5px 0'},
+        ],
+        [
+            {title: '📒', link: '/portifolio', padding: '0 0 2px 0'},
+        ]
+    ]
+}"
+
+></glass-navbar>
+
+<div class="f f-col f-center">
+
+    <glass-selector
+    [items]=
+    "[
+        {
+            title: 'title1', 
+            description: 'description1 WFwn jnwejnn wgnjjnrjngjnrjngjnr jnerjgnnjer ngjerjng jnejnrg jnejnrgejnrgjnegn jjne rjngnj erjng ernjgjne jngrjne rgjnejgnengnjrjndescription1 WFwn jnwejnn wgnjjnrjngjnrjngjnr jnerjgnnjer ngjerjng jnejnrg jnejnrgejnrgjnegn jjne rjngnj erjng ernjgjne jngrjne rgjnejgnengnjrjndescription1 WFwn jnwejnn wgnjjnrjngjnrjngjnr jnerjgnnjer ngjerjng jnejnrg jnejnrgejnrgjnegn jjne rjngnj erjng ernjgjne jngrjne rgjnejgnengnjrjndescription1 WFwn jnwejnn wgnjjnrjngjnrjngjnr jnerjgnnjer ngjerjng jnejnrg jnejnrgejnrgjnegn jjne rjngnj erjng ernjgjne jngrjne rgjnejgnengnjrjn', 
+            img_src: 'glass-assets/icons/filter.png',
+            link: 'link1',
+            tags: ['LESS', 'CSS', 'HTML', 'JS']
+        },
+        {
+            title: 'title1', 
+            description: 'description1', 
+            img_src: 'glass-assets/icons/filter.png',
+            link: 'glass-assets/icons/filter.png',
+            tags: ['Daora', ' daora ']
+        },
+        {
+            title: 'title1', 
+            description: 'description1', 
+            img_src: 'glass-assets/icons/filter.png',
+            link: 'glass-assets/icons/filter.png',
+            tags: ['pastel']
+        },
+        {
+            title: 'title1', 
+            description: 'description1', 
+            img_src: 'img_src1',
+            link: 'link1'
+        }
+    ]"
+
+    [config]=
+    "{ 
+        title: 'My portifolio', 
+        width: '90vw', 
+        height: '90vh'
+    }"
+    >
+    </glass-selector>
+   
+
+</div>
