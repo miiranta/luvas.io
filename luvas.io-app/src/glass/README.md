@@ -50,7 +50,6 @@ ngAfterViewInit(){
 ```html
 <glass-loading-close-on-view-init>
 ```
-- OR you use nothing. It should work anyway. At least for redirects using the redirect service.
 
 ### \<glass-selector>
 Adds a selection menu.

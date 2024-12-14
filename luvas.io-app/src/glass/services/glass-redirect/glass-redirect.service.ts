@@ -25,7 +25,6 @@ export class GlassRedirectService {
     setTimeout(() => {
 
       this.router.navigate([url])
-      .then(() => {this.loadingService.hideLoadingScreen();})
       .catch((error) => {this.loadingService.hideLoadingScreen();});
 
     }, 150);
