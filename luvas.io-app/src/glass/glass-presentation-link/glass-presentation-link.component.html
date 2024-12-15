@@ -1,0 +1,27 @@
+<div class="f f-col f-center">
+    
+    <div class="f f-center" [ngClass]="orientationClass">
+
+    @for (item of content; track item) {
+
+        @switch(item.type) {
+            
+            @case('link') {
+                <div class="f f-row f-center">
+                    <a class="a1 {{item.classes?.join(' ') ?? ''}}" (click)="run(item.onclick)">{{item.content}}</a>
+                </div>
+            }
+
+            @case('button') {
+                <div class="f f-row f-center">
+                    <button class="btn1 btn-wide {{item.classes?.join(' ') ?? ''}}" (click)="run(item.onclick)">{{item.content}}</button>
+                </div>
+            }
+
+        }
+
+    }
+
+    </div>
+
+</div>

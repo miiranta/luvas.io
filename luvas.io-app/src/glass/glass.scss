@@ -74,6 +74,20 @@ label {
     color: $font-sub-color;
 }
 
+a {
+    text-decoration: underline;
+
+    color: $font-main-color;
+
+    font-family: $font-main;
+
+    cursor: pointer;
+}
+
+a:hover {
+    color: $color-highlight;
+}
+
 // ---------------------------------
 
 // Flex ----------------------------
@@ -210,6 +224,8 @@ label {
     backdrop-filter: blur(10px);
 
     padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
 
     cursor: pointer;
 

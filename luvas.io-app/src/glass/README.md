@@ -127,3 +127,26 @@ Adds a text presentation.
 
 ```
 
+### \<glass-presentation-link>
+Adds links and/or buttons in an array.
+
+[config] =
+```typescript
+{
+    orientation: "horizontal" | "vertical"
+}
+```
+
+[content] =
+```typescript
+[
+    {
+        type: "link" | "button",
+        content: string,
+        onclick: string, // 'navigateTo(``)' :)
+        classes: string[] // optional
+    }
+    ...
+]
+
+```
