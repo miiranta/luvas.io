@@ -111,3 +111,19 @@ Adds a media presentation.
 
 ```
 
+### \<glass-presentation-text>
+Adds a text presentation.
+
+[content] =
+```typescript
+[
+    {
+        type: "title" | "subtitle" | "text",
+        content: string,
+        classes: string[] // optional
+    }
+    ...
+]
+
+```
+
