@@ -7,8 +7,7 @@
     mouse_follow: false, 
     gradient: 'radial'
 }"
->
-</glass-background>
+></glass-background>
 
 <glass-navbar
 [config]=
@@ -24,5 +23,23 @@
         ]
     ]
 }"
-
 ></glass-navbar>
+
+<glass-presentation-media
+[config]="
+{
+    width: '100px',
+    height: '100px',
+}"
+
+[content]=
+"[
+    {src: 'glass-assets/icons/filter-white.png'},
+    {src: 'glass-assets/icons/filter.png'},   
+    {src: 'glass-assets/test/test-vertical.jpg'},
+    {src: 'glass-assets/test/test-horizontal.jpg'},
+    {src: 'glass-assets/test/video-vertical.mp4'},
+    {src: 'glass-assets/test/video-horizontal.mp4'},
+]"
+>
+</glass-presentation-media>

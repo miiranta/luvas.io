@@ -1,0 +1,18 @@
+.glass-p-image-viewport {
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background-color: #5a5a5a3b;
+
+    margin-top: 10px;
+}
+
+.glass-p-image-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}

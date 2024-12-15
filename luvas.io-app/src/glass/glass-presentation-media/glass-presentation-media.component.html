@@ -1,0 +1,43 @@
+<div class="f f-col f-center">
+
+    <div class="f f-row f-center glass-p-image-viewport shadow glass" [style.width]="config.width" [style.height]="config.height" #imageViewport>
+
+        <div class="f f-row f-center glass-p-image-wrap" >
+        @for (item of content; track item){
+            <div class="f f-row f-center" [style.width]="config.width" [style.height]="config.height" style="flex-shrink: 0;">
+
+            @if(shouldBeLoaded($index)) {
+                @if (isImage(item.src)){
+                    <img [src]="item.src" [style.width]="'auto'" [style.height]="'auto'" [style.max-width]="config.width" [style.max-height]="config.height"/>
+                }
+                
+                @else if (isVideo(item.src)){
+                    <video [src]="item.src" [style.width]="'auto'" [style.height]="'auto'" [style.max-width]="config.width" [style.max-height]="config.height" controls></video>
+                }
+            } 
+
+            </div>
+        }
+        </div>
+    </div>
+
+    @if (image_total > 1){
+
+        <div class="f f-row f-center" style="margin: 10px;">
+            <div class="f f-col f-center btn-square" (click)="goLeft(imageViewport)">
+                <h2><</h2>
+            </div>
+
+            <div class="f f-col f-center" style="margin-left: 10px; margin-right: 10px;">
+                <p>{{image_index + 1}} / {{image_total}}</p>
+            </div>
+
+            <div class="f f-col f-center btn-square" (click)="goRight(imageViewport)">
+                <h2 >></h2>
+            </div>
+        </div>
+
+    }
+
+</div>
+  

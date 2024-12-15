@@ -90,3 +90,24 @@ Adds a navigation bar.
     }]]
 }
 ```
+
+### \<glass-presentation-media>
+Adds a media presentation.
+
+[config] =
+```typescript
+{
+    height: number,
+    width: number,
+}
+```
+
+[content] =
+```typescript
+[
+    {src: string},
+    ...
+]
+
+```
+
