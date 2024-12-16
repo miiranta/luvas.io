@@ -25,50 +25,23 @@
 }"
 ></glass-navbar>
 
-<glass-presentation-media
-[config]="
-{
-    width: '100px',
-    height: '100px',
-}"
-
+<glass-presentation
 [content]=
 "[
-    {src: 'glass-assets/icons/filter-white.png'},
-    {src: 'glass-assets/icons/filter.png'},   
-    {src: 'glass-assets/test/test-vertical.jpg'},
-    {src: 'glass-assets/test/test-horizontal.jpg'},
-    {src: 'glass-assets/test/video-vertical.mp4'},
-    {src: 'glass-assets/test/video-horizontal.mp4'},
+
+    [
+        {type: 'media', content: [{src: 'glass-assets/icons/filter-white.png'}], config: {width: '100px', height: '100px'}},
+        {type: 'text', content: [{type: 'title', content: 'Sussa', classes:[]}] },
+        {type: 'link', content: [{type: 'button', content: 'imalink3', onclick: 'navigateTo(`portifolio`)', classes: ['edinaldo', 'pereira']}], config: {orientation: 'horizontal'}},
+        {type: 'space', content: {classes: ['hey']}},
+    ],
+    [
+        {type: 'media', content: [{src: 'glass-assets/icons/filter-white.png'}], config: {width: '100px', height: '100px'}},
+        {type: 'text', content: [{type: 'title', content: 'Sussa', classes:[]}] },
+        {type: 'link', content: [{type: 'button', content: 'imalink3', onclick: 'navigateTo(`portifolio`)', classes: ['edinaldo', 'pereira']}], config: {orientation: 'horizontal'}},
+    ]
+
+
+
 ]"
->
-</glass-presentation-media>
-
-<glass-presentation-text
-[content]=
-"[
-    {type: 'title', content: 'Title', classes: ['edinaldo', 'pereira']},
-    {type: 'subtitle', content: 'Title'},
-    {type: 'text', content: 'Title', classes: []},
-    {type: 'title', content: 'wefksmkdpvömssrihm mkösläv,ösrkmtkmh mkömdfhlmksdngjnsjfg wqer', classes: ['edinaldo', 'pereira']},
-    {type: 'subtitle', content: 'ooi ergoi reiogoeirjg ierjg iermpldfpsak 0m orekmg oie ri0ejrierierjheorpe'},
-    {type: 'text', content: 'Title ergerh  htrthrt urzztktkzu ukzuukzukrtzjjz  z zj ztj ezje z jez jerz jerrzj tetzkez jrjrez zjettz jetzjret hertzj ezjrztz jrtz jtzktzj erzjeztj', classes: []},
-    {type: 'text', content: ' rwrwler wle lrewp lrwer plwp rlwpl erlpw plwetüh,lh,l elr l,l,er z,lel,r zl,er lz, er ert', classes: []},
-]"
-
-></glass-presentation-text>
-
-<glass-presentation-link
-[config]=
-"{
-    orientation: 'horizontal',
-}"
-
-[content]=
-"[
-    {type: 'link', content: 'imalink1', onclick: 'navigateTo(`portifolio`)', classes: ['edinaldo', 'pereira']},
-    {type: 'link', content: 'imalink2', onclick: '', classes: []},
-    {type: 'button', content: 'imalink3', onclick: 'navigateTo(`portifolio`)', classes: ['edinaldo', 'pereira']},
-    {type: 'button', content: 'imalink4', onclick: '', classes: []},
-]"
-></glass-presentation-link>
+></glass-presentation>

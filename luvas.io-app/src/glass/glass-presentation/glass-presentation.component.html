@@ -1,0 +1,29 @@
+<div class="f f-col f-center">
+
+    @for (row of content; track row) {
+
+        <div class="f f-row f-center w100">
+        @for (item of row; track item) {
+
+            <div class="f f-col f-center f-grow">
+            @switch(item.type) {
+                @case ("media") {
+                    <glass-presentation-media [config]="item.config" [content]="item.content"></glass-presentation-media>
+                }
+                @case ("text") {
+                    <glass-presentation-text [content]="item.content"></glass-presentation-text>
+                }
+                @case ("link") {
+                    <glass-presentation-link [config]="item.config" [content]="item.content"></glass-presentation-link>
+                }
+                @case ("space") {
+                    <div class="f f-col f-center f-grow w100 h100" class="{{item.content.classes?.join(' ') ?? ''}}"></div>
+                }
+            }
+            </div>
+
+        }
+        </div>
+
+    }
+</div>

@@ -150,3 +150,28 @@ Adds links and/or buttons in an array.
 ]
 
 ```
+
+### \<glass-presentation>
+Compiles all presentation components.
+
+[content]=
+```typescript
+[
+
+    // One row
+    [
+        {type: 'media', content: [{src: 'glass-assets/icons/filter-white.png'}], config: {width: '100px', height: '100px'}},
+        {type: 'text', content: [{type: 'title', content: 'Sussa', classes:[]}] },
+        {type: 'link', content: [{type: 'button', content: 'imalink3', onclick: 'navigateTo(`portifolio`)', classes: ['edinaldo', 'pereira']}], config: {orientation: 'horizontal'}},
+        {type: 'space', content: {classes: ['hey']}}, //Give some spacing if needed
+    ],
+
+    // Another row
+    [
+        {type: 'media', content: [{src: 'glass-assets/icons/filter-white.png'}], config: {width: '100px', height: '100px'}},
+        {type: 'text', content: [{type: 'title', content: 'Sussa', classes:[]}] },
+        {type: 'link', content: [{type: 'button', content: 'imalink3', onclick: 'navigateTo(`portifolio`)', classes: ['edinaldo', 'pereira']}], config: {orientation: 'horizontal'}},
+    ]
+
+]
+```
