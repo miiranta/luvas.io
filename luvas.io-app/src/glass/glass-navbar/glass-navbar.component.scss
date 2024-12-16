@@ -4,8 +4,6 @@
 ::ng-deep glass-navbar {
     width: 100vw;
     min-width: 100vw;
-    display: flex;
-    position: fixed;
 
     z-index: 10;
 }
@@ -69,8 +67,8 @@
 
     width: 100vw;
     min-width: 100vw;
+
     display: flex;
-    position: fixed;
 }
 
 .glass-navbar-title-start {

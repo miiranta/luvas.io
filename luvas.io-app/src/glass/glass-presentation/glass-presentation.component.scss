@@ -1,0 +1,33 @@
+.outer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (orientation: portrait) {
+    .outer {
+        display: block;
+
+        width: 100%;
+    }
+    .inner {
+        float: left;
+
+        width: 50%;
+    }
+}
+
