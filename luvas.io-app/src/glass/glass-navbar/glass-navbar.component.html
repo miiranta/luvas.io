@@ -1,8 +1,8 @@
-<div class="f f-row f-center w100 glass-navbar-margin"></div>
+<div class="f f-row f-center glass-navbar-margin"></div>
 
-<div class="f f-col f-center w100 glass-navbar-main shadow glass" #glassNavbar>
+<div class="f f-col f-center glass-navbar-main shadow glass" #glassNavbar>
 
-    <div class="f f-row f-center w100 glass-navbar-info">
+    <div class="f f-row f-center glass-navbar-info">
 
         <div class="f f-row f-start w100" style="padding-left: 10px; padding-top: 4px;">
             
@@ -10,19 +10,28 @@
                 @for (item of config.title_start; track item){
                     <h2 class="glass-navbar-title-start-info">{{item}}</h2>
                 }
+                
             </div>
 
+            <div class="f f-col f-center" style="height: 60px;">
+            <div class="line-break-vertical glass-navbar-guard"></div>
+            </div>
+
+            <ngx-simplebar class="glass-navbar-sb f f-col f-center">
             @for (group of config.links; track group){ 
                 <div class="f f-row f-center" style="height: 60px;">
-                    <div class="line-break-vertical glass-navbar-guard"></div>
                     @for (item of group; track item){
                         <div class="f f-col f-center h100" [style.padding]="item.padding">
                         <a class="glass-navbar-link" (click)="redirectService.navigateTo(item.link);">{{item.title}}</a>
                         </div>
                     }
-                </div>
 
+                    @if ($index < config.links.length - 1){
+                    <div class="line-break-vertical glass-navbar-guard"></div>
+                    }
+                </div>
             }
+            </ngx-simplebar>
 
         </div>
 
@@ -32,12 +41,17 @@
         </div>
         </div>
 
-        <div class="f f-row f-end w100">
+        <div class="f f-row f-end" style="flex-grow: 0; word-break: keep-all;">
+
+            <div class="f f-col f-center" style="height: 58px;">
+                <div class="line-break-vertical glass-navbar-guard" style="margin-right: 6px;"></div>
+            </div>
+
             <div class="f f-col f-center" style="height: 60px; padding-right: 10px;">
             
-            @for (item of config.title_end; track item){
-                <h2 class="glass-navbar-title-end-info" style="margin: 2px;">{{item}}</h2>
-            }
+                @for (item of config.title_end; track item){
+                    <h2 class="glass-navbar-title-end-info" style="margin: 2px;">{{item}}</h2>
+                }
             
             </div>
         </div>
@@ -45,7 +59,7 @@
 
     </div>   
 
-    <div class="f f-row f-center w100 glass-navbar-sub shadow glass">
+    <div class="f f-row f-center glass-navbar-sub shadow glass">
 
         <div class="f f-row f-start">
             <h2 class="glass-navbar-title-start" style="margin-left:4px;" (click)="navigateToPart(-1);">{{URL}}</h2>

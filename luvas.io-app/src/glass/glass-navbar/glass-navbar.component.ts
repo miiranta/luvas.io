@@ -3,6 +3,8 @@ import { Component, inject, Input, ViewChild } from '@angular/core';
 import { GlassDoceventsService } from '../services/glass-docevents/glass-docevents.service';
 import { GlassRedirectService } from '../services/glass-redirect/glass-redirect.service';
 
+import { SimplebarAngularModule } from 'simplebar-angular';
+
 import anime from 'animejs';
 
 interface NavBarConfig {
@@ -17,7 +19,7 @@ interface NavBarConfig {
 
 @Component({
   selector: 'glass-navbar',
-  imports: [],
+  imports: [SimplebarAngularModule],
   templateUrl: './glass-navbar.component.html',
   styleUrl: './glass-navbar.component.scss'
 })
@@ -149,7 +151,17 @@ export class GlassNavbarComponent {
   }
 
   closeNavOnScroll(event: any) {
+
     if(this.nav_open && this.glassNavbar != undefined) {
+
+      // Is event inside glass-navbar?
+      const mousePos = this.eventService.getMousePosition();
+      const nav_info = this.glassNavbar.nativeElement.querySelector('.glass-navbar-info');
+
+      console.log(this.eventService.isInViewport(nav_info, mousePos.x, mousePos.y));
+
+      if(this.eventService.isInViewport(nav_info, mousePos.x, mousePos.y)) return;
+      
       this.toggleNav(this.glassNavbar.nativeElement);
     }
   }

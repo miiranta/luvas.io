@@ -409,11 +409,11 @@ export class GlassSelectorComponent {
 
     const picker = this.picker_instance;
     
-    const mouse_x = event.clientX;
-    const mouse_y = event.clientY;
+    // Get mouse position
+    const mousePos = this.eventService.getMousePosition();
 
     // Is the mouse inside the picker?
-    let is_inside = this.isInViewport(picker, mouse_x, mouse_y);
+    let is_inside = this.eventService.isInViewport(picker, mousePos.x, mousePos.y);
     if(is_inside) return;
 
     this.picker_enable_outside_click = false;
@@ -449,7 +449,8 @@ export class GlassSelectorComponent {
   onSelectedInstanceClick(event: any){
     if(!this.selected_instance) return;
 
-    const click_is_in = this.isInViewport(this.selected_instance, event.clientX, event.clientY);
+    const mousePos = this.eventService.getMousePosition();
+    const click_is_in = this.eventService.isInViewport(this.selected_instance, mousePos.x, mousePos.y);
     if(!click_is_in) return;
 
     if(this.picker_open) return;
@@ -461,17 +462,6 @@ export class GlassSelectorComponent {
     // Thats the same as clicking "see more", it will run navigateTo
     link.click();
 
-  }
-
-  isInViewport(element: HTMLElement, x: number, y: number) {
-    const rect = element.getBoundingClientRect();
-  
-    return (
-      rect.top <= y &&
-      rect.bottom >= y &&
-      rect.left <= x &&
-      rect.right >= x
-    );
   }
 
 }
