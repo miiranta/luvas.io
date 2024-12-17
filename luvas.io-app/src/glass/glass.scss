@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "PublicSans";
+    src: url("/glass-assets/fonts/PublicSans.ttf") format("opentype");
+}
+
 // Variables -----------------------
 
 $color-base: #170a24;
@@ -10,8 +15,8 @@ $color-success: #f0f0f0;
 $color-error: #f0f0f0;
 $color-warning: #f0f0f0;
 
-$font-main: 'Roboto', sans-serif;
-$font-sub: 'Roboto', sans-serif;
+$font-main: 'PublicSans', serif;
+$font-sub: 'PublicSans', serif;
 
 $font-main-color: #ffffff;
 $font-sub-color: #cfcfcf;
@@ -248,3 +253,5 @@ a:hover {
     // inner border 1px
     border: 2px solid rgb(255, 255, 255);
 }
+
+// ---------------------------------

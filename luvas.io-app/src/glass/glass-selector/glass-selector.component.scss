@@ -129,6 +129,7 @@ $list-height: 100%;
   font-weight: 600;
 
   margin: 0px;
+  margin-bottom: 15px;
   padding: 6px;
 }
 
@@ -154,7 +155,7 @@ $list-height: 100%;
 }
 
 .glass-selector-item-btn {
-  width: 70px;
+  width: 90px;
   height: 30px;
 
   color: rgb(151, 0, 202)
@@ -225,6 +226,10 @@ $list-height: 100%;
 
   margin: 0px;
   padding: 0px;
+}
+
+.glass-selector-tagpicker-img {
+  content: url('/glass-assets/icons/filter-white.png');
 }
 
 .glass-selector-tagpicker-text-wrap {

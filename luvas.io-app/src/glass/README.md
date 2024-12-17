@@ -31,6 +31,7 @@ Adds a nice background.
     gradient: "" | "radial"
 }
 ```
+
 ### \<glass-loading>
 Adds a loading screen.
 Use the redirect service's navigateTo method to have this integrated.

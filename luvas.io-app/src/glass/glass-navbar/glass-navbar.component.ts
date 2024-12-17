@@ -158,8 +158,6 @@ export class GlassNavbarComponent {
       const mousePos = this.eventService.getMousePosition();
       const nav_info = this.glassNavbar.nativeElement.querySelector('.glass-navbar-info');
 
-      console.log(this.eventService.isInViewport(nav_info, mousePos.x, mousePos.y));
-
       if(this.eventService.isInViewport(nav_info, mousePos.x, mousePos.y)) return;
       
       this.toggleNav(this.glassNavbar.nativeElement);
