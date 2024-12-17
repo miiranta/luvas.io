@@ -82,7 +82,7 @@
                             </div>
                         </div>
 
-                        <div class="f f-col f-center h100">
+                        <div class="glass-selector-img-wrap f f-col f-center h100">
 
                             <div class="f f-col f-center glass-selector-item-img">
                             <img [src]="item.img_src" width="100%">
@@ -91,7 +91,7 @@
                             <div class="f f-col f-center" style="height: 32px;"></div>
 
                             <div class="glass-selector-item-btn-wrap">
-                                <button class="btn-wide glass-selector-item-btn glass-selector-item-link" (click)="redirectService.navigateTo(item.link)"> See more </button>  
+                                <a class="glass-selector-item-btn glass-selector-item-link" (click)="redirectService.navigateTo(item.link)"> See more </a>  
                             </div>
 
                         </div>
