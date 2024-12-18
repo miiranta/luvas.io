@@ -46,7 +46,7 @@
 
     $shift: -15;
 
-    background-color: rgb(calc(#{$red} - $shift), calc(#{$green} - $shift), calc(#{$blue} - $shift));
+    background-color: rgba(calc(#{$red} - $shift), calc(#{$green} - $shift), calc(#{$blue} - $shift), 0.9);
     height: 60px;
 
     padding-bottom: 2px;
@@ -58,6 +58,8 @@
     min-width: 100vw;
 
     overflow: hidden;
+
+    border-radius: 0;
 
     z-index: 11;
 }
@@ -154,39 +156,56 @@
 
     opacity: 1;
 
-    font-size: 12px;
+    font-size: 9pt;
     font-weight: 100;
     text-align: center;
 
     margin-right: 3px;
 
     letter-spacing: 1.5px;
+
+    word-wrap: keep-all;
+    white-space: nowrap;
 }
 
 .glass-navbar-link {
-    margin-left: 4px;
+    margin-left: 8px;
 
     color: glass.$color-text;
     
-
     text-decoration: none;
 
-    font-size: 22pt;
+    font-size: 18pt;
     font-family: glass.$font-sub;
 
     padding: 5px;
 
     cursor: pointer;
+
+    border: 2px solid glass.$color-text;
+    border-radius: 5px;
+
+    padding-right: 10px;
+    padding-left: 10px;
+
+    opacity: 0.7;
+    transition: 0.3s;
 }
 
 .glass-navbar-link:hover {
-    scale: 1.1;
+
+    opacity: 1;
+    color: glass.$color-text;
+    transition: 0.3s;
 }
 
 .glass-navbar-title-start-info {
     margin: 2px;
 
     font-family: glass.$font-sub;
+
+    font-size: 14pt;
+    font-weight: 300;
 }
 
 .glass-navbar-guard {
@@ -198,7 +217,7 @@
 
     padding: 0;
     margin: 0;
-    margin-left: 6px;
+    margin-left: 8px;
 }
 
 .glass-navbar-sb {
@@ -214,4 +233,10 @@
     flex-direction: row;
 
     height: 58px;
+}
+
+@media screen and (orientation: portrait) {
+    .glass-navbar-title-end-info {
+        font-size: 7pt;
+    }
 }

@@ -1,3 +1,5 @@
+@use "./ionicons/css/ionicons.css" as ionicons;
+
 @font-face {
     font-family: "PublicSans";
     src: url("/glass-assets/fonts/PublicSans.ttf") format("opentype");
@@ -207,6 +209,8 @@ a:hover {
 
     transition: 0.3s;
     scale: 1;
+
+    text-align: center;
     
 }
 
@@ -242,6 +246,8 @@ a:hover {
 
     transition: 0.3s;
     scale: 1;
+
+    text-align: center;
 }
 
 .btn-wide:hover {

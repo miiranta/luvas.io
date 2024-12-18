@@ -2,7 +2,7 @@
 
 <div class="f f-col f-center glass-navbar-main shadow glass" #glassNavbar>
 
-    <div class="f f-row f-center glass-navbar-info">
+    <div class="f f-row f-center glass-navbar-info glass-plane">
 
         <div class="f f-row f-start w100" style="padding-left: 10px; padding-top: 4px;">
             
@@ -21,8 +21,8 @@
             @for (group of config.links; track group){ 
                 <div class="f f-row f-center" style="height: 60px;">
                     @for (item of group; track item){
-                        <div class="f f-col f-center h100" [style.padding]="item.padding">
-                        <a class="glass-navbar-link" (click)="redirectService.navigateTo(item.link);">{{item.title}}</a>
+                        <div class="f f-col f-center h100">
+                        <a class="glass-navbar-link {{item.classes?.join(' ') ?? ''}}" (click)="navigateToAndClose(item.link);">{{item.title}}</a>
                         </div>
                     }
 

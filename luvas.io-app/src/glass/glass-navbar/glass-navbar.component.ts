@@ -1,4 +1,5 @@
 import { Component, inject, Input, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GlassDoceventsService } from '../services/glass-docevents/glass-docevents.service';
 import { GlassRedirectService } from '../services/glass-redirect/glass-redirect.service';
@@ -13,7 +14,7 @@ interface NavBarConfig {
   links: {
     title: string;
     link: string;
-    padding: string;
+    classes?: string[];
   }[][];
 }
 
@@ -25,6 +26,7 @@ interface NavBarConfig {
 })
 export class GlassNavbarComponent {
   
+  private router: Router = inject(Router);
   private eventService: GlassDoceventsService = inject(GlassDoceventsService);
   redirectService: GlassRedirectService = inject(GlassRedirectService);
 
@@ -37,12 +39,12 @@ export class GlassNavbarComponent {
     title_end: ['title3', 'title4'],
     links: [
       [
-        {title: 'Link1', link: '/link1', padding: '0 0 0 0'},
+        {title: 'Link1', link: '/link1', classes: []},
       ],
       [
-        {title: 'Link2', link: '/link2', padding: '0 0 0 0'},
-        {title: 'Link3', link: '/link3', padding: '0 0 0 0'},
-        {title: 'Link4', link: '/link4', padding: '0 0 0 0'},
+        {title: 'Link2', link: '/link2', classes: []},
+        {title: 'Link3', link: '/link3', classes: []},
+        {title: 'Link4', link: '/link4', classes: []},	
       ]
     ]
   };
@@ -59,21 +61,29 @@ export class GlassNavbarComponent {
   }
 
   ngOnInit() {
-    this.renderRoutes();
-
     this.eventService.addCallbackToScroll((event: any) => {
-      return this.closeNavOnScroll(event);
+      return this.closeNavOnAction(event);
+    });
+    this.eventService.addCallbackToMouseClick((event: any) => {
+      return this.closeNavOnAction(event);
+    });
+
+    this.router.events.subscribe((event) => {
+      this.renderRoutes();
     });
   }
 
   renderRoutes() {
-    const route = this.redirectService.getRoute();
+    const route = this.redirectService.getURL();
 
     // Break the route into parts
     this.route_parts = route.split('/');
 
-    // Remove the first empty string
-    this.route_parts.shift();
+    // Remove 3 first parts
+    this.route_parts = this.route_parts.slice(3);
+    
+    // Remove fist part if ''
+    if(this.route_parts[0] == '') this.route_parts.shift();
 
     // Add / to each part
     this.route_parts = this.route_parts.map((part) => {
@@ -95,6 +105,11 @@ export class GlassNavbarComponent {
       this.redirectService.navigateTo(route);
     }
 
+  }
+
+  navigateToAndClose(route: string) {
+    this.redirectService.navigateTo(route);
+    this.toggleNav(this.glassNavbar.nativeElement);
   }
 
   toggleNav(nav: HTMLElement) {
@@ -147,10 +162,10 @@ export class GlassNavbarComponent {
       });
 
     }
-    
+
   }
 
-  closeNavOnScroll(event: any) {
+  closeNavOnAction(event: any) {
 
     if(this.nav_open && this.glassNavbar != undefined) {
 

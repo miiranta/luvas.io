@@ -1,3 +1,28 @@
 <glass-loading></glass-loading>
 
+<glass-background 
+[config]=
+"{
+    type: '', 
+    mouse_follow: false, 
+    gradient: 'radial'
+}"
+></glass-background>
+
+<glass-navbar
+[config]=
+"{
+    title_start: ['luvas.io'],
+    title_end: ['Created by', 'Lucas Miranda'],
+    links: [
+        [
+            {title: '', link: '/', classes: ['icon', 'ion-ios-home-outline']},
+        ],
+        [
+            {title: '', link: '/portifolio', classes: ['icon', 'ion-ios-book-outline']},
+        ]
+    ]
+}"
+></glass-navbar>
+
 <router-outlet></router-outlet>

@@ -16,6 +16,7 @@ Created for Angular projects.
 - Install modules:
 ```bash
 npm i simplebar-angular --save
+npm i @ng-icons/core @ng-icons/ionicons
 ```
 
 ## Components
@@ -87,7 +88,7 @@ Adds a navigation bar.
     links: [[{
         title: string,
         link: string,
-        padding: string, // in px
+        classes: string[]
     }]]
 }
 ```
