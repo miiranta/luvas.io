@@ -70,6 +70,9 @@ export class GlassNavbarComponent {
     this.eventService.addCallbackToMouseClick((event: any) => {
       return this.closeNavOnAction(event);
     });
+    this.eventService.addCallbackToTouchStart((event: any) => {
+      return this.closeNavOnAction(event);
+    });
 
     this.router.events.subscribe((event) => {
       this.renderRoutes();
@@ -175,8 +178,15 @@ export class GlassNavbarComponent {
 
     if(this.nav_open && this.glassNavbar != undefined) {
 
-      // Is event inside glass-navbar?
-      const mousePos = this.eventService.getMousePosition();
+      let mousePos = {x: 0, y: 0};
+
+      // Event is touchstart
+      if(event.type == 'touchstart') {
+        mousePos = {x: event.touches[0].clientX, y: event.touches[0].clientY};
+      }else {
+        mousePos = this.eventService.getMousePosition();
+      }
+
       const nav_info = this.glassNavbar.nativeElement.querySelector('.glass-navbar-info');
 
       if(this.eventService.isInViewport(nav_info, mousePos.x, mousePos.y)) return;

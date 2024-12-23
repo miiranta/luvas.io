@@ -35,9 +35,25 @@ export class GlassDoceventsService {
         if(callback !== null) callback(event);
       });
     });
+    
+    // Touch move
     window.addEventListener('touchmove', (event) => {
-      this.scrollCallbacks.forEach(callback => { 
-        if (callback !== null) callback(event);
+      this.touchMoveCallbacks.forEach(callback => { 
+        if(callback !== null) callback(event);
+      });
+    });
+
+    // Touch end
+    window.addEventListener('touchend', (event) => {
+      this.touchEndCallbacks.forEach(callback => { 
+        if(callback !== null) callback(event);
+      });
+    });
+
+    // Touch start
+    window.addEventListener('touchstart', (event) => {
+      this.touchStartCallbacks.forEach(callback => { 
+        if(callback !== null) callback(event);
       });
     });
 
@@ -60,6 +76,9 @@ export class GlassDoceventsService {
   private mouseClickCallbacks: ((event: any) => void)[] = [];
   private scrollCallbacks: ((event: any) => void)[] = [];
   private windowResizeCallbacks: ((event: any) => void)[] = [];
+  private touchMoveCallbacks: ((event: any) => void)[] = [];
+  private touchEndCallbacks: ((event: any) => void)[] = [];
+  private touchStartCallbacks: ((event: any) => void)[] = [];
 
   addCallbackToMouseMove(callback: (event: any) => void) {
     this.mouseMoveCallbacks.push(callback);
@@ -75,6 +94,18 @@ export class GlassDoceventsService {
 
   addCallbackToWindowResize(callback: (event: any) => void) {
     this.windowResizeCallbacks.push(callback);
+  }
+
+  addCallbackToTouchMove(callback: (event: any) => void) {
+    this.touchMoveCallbacks.push(callback);
+  }
+
+  addCallbackToTouchEnd(callback: (event: any) => void) {
+    this.touchEndCallbacks.push(callback);
+  }
+
+  addCallbackToTouchStart(callback: (event: any) => void) {
+    this.touchStartCallbacks.push(callback);
   }
 
   // Auxiliary functions
