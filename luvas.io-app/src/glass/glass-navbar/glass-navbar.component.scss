@@ -11,6 +11,7 @@
 .glass-navbar-main {
     width: 100vw;
     min-width: 100vw;
+    max-width: 100vw;
 
     position: fixed;
     top: 0;
@@ -56,6 +57,7 @@
 
     width: 100vw;
     min-width: 100vw;
+    max-width: 100vw;
 
     overflow: hidden;
 
@@ -213,26 +215,47 @@
 
     width: 2px;
     min-width: 2px;
-    height: 50px;
+    height: 46px;
 
     padding: 0;
     margin: 0;
     margin-left: 8px;
 }
 
-.glass-navbar-sb {
-    width: 100%;
-    height: 58px;
-
-    overflow-y: hidden;
+.glass-navbar-info-start {
+    padding-left: 10px; 
+    padding-top: 4px;
 }
 
-::ng-deep.glass-navbar-sb .simplebar-content {
+.glass-navbar-info-mid {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+
+    overflow: auto;
+}
+
+.glass-navbar-info-end {
+    height: 60px;
+}
+
+.glass-navbar-info-sb {
+    width: 100%;
+    height: 60px;
+}
+
+::ng-deep.glass-navbar-info-sb .simplebar-content {
     display: flex !important;
     justify-content: start;
     flex-direction: row;
+    height: 56px;
+    padding-bottom: 4px !important;
+}
 
-    height: 58px;
+::ng-deep.glass-navbar-info-sb .simplebar-scrollbar::before {
+    margin-top: 3px;
+    height: 5px;
+    
 }
 
 @media screen and (orientation: portrait) {

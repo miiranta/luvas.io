@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
     "animejs": "^3.2.2",
+    "ngx-drag-scroll": "^18.0.0",
     "rxjs": "~7.8.0",
     "simplebar-angular": "^3.3.0",
     "tslib": "^2.3.0",

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { GlassDoceventsService } from '../services/glass-docevents/glass-docevents.service';
 import { GlassRedirectService } from '../services/glass-redirect/glass-redirect.service';
 
-import { SimplebarAngularModule } from 'simplebar-angular';
+import { SimplebarAngularModule, SimplebarAngularComponent } from 'simplebar-angular';
 
 import anime from 'animejs';
 
@@ -33,6 +33,7 @@ export class GlassNavbarComponent {
   URL: string;
 
   @ViewChild('glassNavbar') glassNavbar!: any;
+  @ViewChild('navSb') navSb!: SimplebarAngularComponent;
 
   @Input() config: NavBarConfig = {
     title_start: ['title1', 'title2'],
@@ -48,6 +49,8 @@ export class GlassNavbarComponent {
       ]
     ]
   };
+
+  navSbOptions = { autoHide: false, scrollbarMinSize: 100 };
 
   route_parts: string[] = [];
 
@@ -117,6 +120,9 @@ export class GlassNavbarComponent {
     if(this.nav_animating) return;
     if(!this.nav_open) {
       this.nav_animating = true;
+
+      // Update Simplebar
+      this.navSb.SimpleBar.recalculate();
 
       // Transform 180 glass-navbar-title-end
       anime({

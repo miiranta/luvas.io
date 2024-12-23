@@ -2,10 +2,12 @@
 
 <div class="f f-col f-center glass-navbar-main shadow glass" #glassNavbar>
 
-    <div class="f f-row f-center glass-navbar-info glass-plane">
+    <!-- Info -->
+    <div class="f f-row f-center glass-navbar-info glass-plane w100">
 
-        <div class="f f-row f-start w100" style="padding-left: 10px; padding-top: 4px;">
-            
+        <!-- Start -->
+        <div class="f f-row f-start glass-navbar-info-start">
+                    
             <div class="f f-col f-center" style="height: 60px;">
                 @for (item of config.title_start; track item){
                     <h2 class="glass-navbar-title-start-info">{{item}}</h2>
@@ -14,10 +16,16 @@
             </div>
 
             <div class="f f-col f-center" style="height: 60px;">
-            <div class="line-break-vertical glass-navbar-guard"></div>
+            <div class="line-break-vertical glass-navbar-guard" style="margin-bottom: 4px;"></div>
             </div>
 
-            <ngx-simplebar class="glass-navbar-sb f f-col f-center">
+        </div>
+
+        <!-- Mid -->
+        <div class="f f-row f-start glass-navbar-info-mid">
+            
+            <ngx-simplebar [options]="navSbOptions" class="glass-navbar-info-sb f f-col f-center" #navSb>
+            
             @for (group of config.links; track group){ 
                 <div class="f f-row f-center" style="height: 60px;">
                     @for (item of group; track item){
@@ -27,7 +35,7 @@
                     }
 
                     @if ($index < config.links.length - 1){
-                    <div class="line-break-vertical glass-navbar-guard"></div>
+                        <div class="line-break-vertical glass-navbar-guard"></div>
                     }
                 </div>
             }
@@ -35,19 +43,14 @@
 
         </div>
 
-        <div class="glass-navbar-title-mid-wrap">
-        <div class="glass-navbar-title-mid-wrap2">    
-            <h2 class="glass-navbar-title-mid"></h2>
-        </div>
-        </div>
-
-        <div class="f f-row f-end" style="flex-grow: 0; word-break: keep-all;">
+        <!-- End -->
+        <div class="f f-row f-end glass-navbar-end">
 
             <div class="f f-col f-center" style="height: 58px;">
-                <div class="line-break-vertical glass-navbar-guard" style="margin-right: 6px;"></div>
+                <div class="line-break-vertical glass-navbar-guard" style="margin-right: 6px; margin-bottom: 4px;"></div>
             </div>
 
-            <div class="f f-col f-center" style="height: 60px; padding-right: 10px;">
+            <div class="f f-col f-center" style="height: 60px; padding-right: 10px; flex-grow: 0; word-break: keep-all;">
             
                 @for (item of config.title_end; track item){
                     <h2 class="glass-navbar-title-end-info" style="margin: 2px;">{{item}}</h2>
@@ -56,9 +59,9 @@
             </div>
         </div>
 
-
     </div>   
 
+    <!-- Sub -->
     <div class="f f-row f-center glass-navbar-sub shadow glass">
 
         <div class="f f-row f-start">
