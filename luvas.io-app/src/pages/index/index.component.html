@@ -11,7 +11,7 @@
 
     [
         {type: 'space', content: {classes: ['m-up', 'w100']}},
-        {type: 'text', content: [{type: 'text', content: 'Useful links:', classes:[ 'txt-align-center', 'w100']}] },
+        {type: 'text', content: [{type: 'text', content: 'Useful links:', classes:['m-left', 'm-right', 'txt-align-center', 'w100']}] },
         {type: 'link', 
             content: [
                 {
@@ -33,19 +33,18 @@
 
             ], 
             config: {orientation: 'horizontal'}
-        }
+        },
+        
     ],
 
     [
         {type: 'space', content: {classes: ['m-up', 'w90vw']}},
-        {type: 'space', content: {classes: ['m-up', 'w90vw']}},
-        {type: 'space', content: {classes: ['m-up', 'w90vw']}},
-        {type: 'text', content: [{type: 'subtitle', content: 'What\'s that website?', classes:['txt-align-center', 'w100']}] },
-        {type: 'text', content: [{type: 'text', content: 'This is my personal website. A simple project aiming to help, test and show other projects.', classes:['txt-align-center', 'w100']}] },
+        {type: 'text', content: [{type: 'subtitle', content: 'What\'s that website?', classes:['m-left', 'm-right', 'txt-align-center', 'w100']}] },
+        {type: 'text', content: [{type: 'text', content: 'This is my personal website. A simple project aiming to help, test and show other projects.', classes:['m-left', 'm-right', 'txt-align-center', 'w100']}] },
         {type: 'link', 
             content: [
                 {
-                    type: 'link', content: 'About this website', onclick: 'navigateTo(`portifolio/luvas.io`)', 
+                    type: 'link', content: 'About this website', onclick: 'navigateTo(`portifolio/luvasio`)', 
                     classes: []
                 }
             ], 
@@ -54,7 +53,7 @@
     ],
 
     [
-        {type: 'text', content: [{type: 'subtitle', content: 'How can i contact you?', classes:['txt-align-center', 'w100']}] },
+        {type: 'text', content: [{type: 'subtitle', content: 'How can i contact you?', classes:['m-left', 'm-right', 'txt-align-center', 'w100']}] },
         {type: 'link', 
             content: [
                 {
@@ -64,6 +63,10 @@
             ], 
             config: {orientation: 'horizontal'}
         }
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-up', 'w90vw']}},
     ]
 
 ]"
