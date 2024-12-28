@@ -1,12 +1,30 @@
+::ng-deep glass-presentation-text {
+    width: 100%;
+}
+
 .h1p {
     margin-top: 10px;
     margin: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    font-weight: 600;
 }
 
 .h2p {
-    margin: 5px;
+    margin: 2px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    font-weight: 400;
+
+    padding-left: 3px;
 }
 
 .textp {
     margin: 2px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    padding-left: 3px;
 }

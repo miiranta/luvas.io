@@ -1,11 +1,13 @@
-<div class="f f-col f-center">
+<div class="f f-row f-center w100">
+<div class="outer">
 
     @for (row of content; track row) {
 
-        <div class="outer w100">
+        <div class="outer2">
         @for (item of row; track item) {
 
-            <div class="inner f-grow">
+            <div class="inner">
+            <div class="inner2">
             @switch(item.type) {
                 @case ("media") {
                     <glass-presentation-media [config]="item.config" [content]="item.content"></glass-presentation-media>
@@ -21,9 +23,12 @@
                 }
             }
             </div>
+            </div>
 
         }
         </div>
 
     }
+
+</div>
 </div>

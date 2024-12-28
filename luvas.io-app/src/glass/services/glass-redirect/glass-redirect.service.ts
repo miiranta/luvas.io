@@ -24,10 +24,22 @@ export class GlassRedirectService {
 
     setTimeout(() => {
 
+      // External URL
+      if(url.includes('http') || url.includes('https')) {
+        // Open new tab
+        window.open(url, '_blank');
+        this.loadingService.hideLoadingScreen();
+        return;
+      }
+      
       this.router.navigate([url])
       .catch((error) => {this.loadingService.hideLoadingScreen();});
 
     }, 150);
+  }
+
+  emailTo(email: string): void {
+    window.open(`mailto:${email}`);
   }
 
   getURL(): string {

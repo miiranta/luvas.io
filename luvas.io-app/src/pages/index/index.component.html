@@ -3,35 +3,72 @@
 <glass-presentation
 [content]=
 "[
-
     [
-        {type: 'media', 
-            content: [
-                {src: 'glass-assets/icons/filter-white.png'},
-                {src: 'glass-assets/icons/filter-white.png'}
-            ], 
-            config: {width: '100px', height: '100px'}
-        },
-
-        {type: 'media', 
-            content: [
-                {src: 'glass-assets/icons/filter-white.png'},
-                {src: 'glass-assets/icons/filter-white.png'}
-            ], 
-            config: {width: '100px', height: '100px'}
-        },
-
-        {type: 'text', content: [{type: 'title', content: 'Sussa1', classes:[]}] },
-        {type: 'link', content: [{type: 'button', content: 'imalink3', onclick: 'navigateTo(`portifolio`)', classes: ['edinaldo', 'pereira']}], config: {orientation: 'horizontal'}},
         
     ],
+
     [
-        {type: 'media', content: [{src: 'glass-assets/icons/filter-white.png'}], config: {width: '100px', height: '100px'}},
-        {type: 'text', content: [{type: 'title', content: 'Sussa2', classes:[]}] },
-        {type: 'link', content: [{type: 'button', content: 'imalink3', onclick: 'navigateTo(`portifolio`)', classes: ['edinaldo', 'pereira']}], config: {orientation: 'horizontal'}},
+        {type: 'text', content: [{type: 'title', content: 'Greetings! My name is Lucas Miranda.', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w100']}]},
+        {type: 'text', content: [{type: 'subtitle', content: 'Currently a Computer Science student at University of São Paulo (USP).', classes:['m-left', 'm-right', 'txt-align-start', 'w100']}] },
+        {type: 'text', content: [{type: 'subtitle', content: 'Software developer and computer enthusiast.', classes:['m-left', 'm-right', 'txt-align-start', 'w100']}] },
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-up', 'w100']}},
+        {type: 'text', content: [{type: 'text', content: 'Useful links:', classes:[ 'txt-align-center', 'w100']}] },
+        {type: 'link', 
+            content: [
+                {
+                    type: 'button', content: 'My Portifolio', onclick: 'navigateTo(`portifolio`)', 
+                    classes: []
+                },
+                {
+                    type: 'button', content: 'My CV / Resume', onclick: 'navigateTo(`resume`)', 
+                    classes: []
+                },
+                {
+                    type: 'button', content: 'Github', onclick: 'navigateTo(`https://github.com/miiranta`)', 
+                    classes: []
+                },
+                {
+                    type: 'button', content: 'LinkedIn', onclick: 'navigateTo(`https://linkedin.com/in/miiranta`)', 
+                    classes: []
+                },
+
+            ], 
+            config: {orientation: 'horizontal'}
+        }
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-up', 'w90vw']}},
+        {type: 'space', content: {classes: ['m-up', 'w90vw']}},
+        {type: 'space', content: {classes: ['m-up', 'w90vw']}},
+        {type: 'text', content: [{type: 'subtitle', content: 'What\'s that website?', classes:['txt-align-center', 'w100']}] },
+        {type: 'text', content: [{type: 'text', content: 'This is my personal website. A simple project aiming to help, test and show other projects.', classes:['txt-align-center', 'w100']}] },
+        {type: 'link', 
+            content: [
+                {
+                    type: 'link', content: 'About this website', onclick: 'navigateTo(`portifolio/luvas.io`)', 
+                    classes: []
+                }
+            ], 
+            config: {orientation: 'horizontal'}
+        }
+    ],
+
+    [
+        {type: 'text', content: [{type: 'subtitle', content: 'How can i contact you?', classes:['txt-align-center', 'w100']}] },
+        {type: 'link', 
+            content: [
+                {
+                    type: 'link', content: 'lucasrezende12@hotmail.com', onclick: 'emailTo(`lucasrezende12@hotmail.com`)',
+                    classes: []
+                }
+            ], 
+            config: {orientation: 'horizontal'}
+        }
     ]
-
-
 
 ]"
 ></glass-presentation>

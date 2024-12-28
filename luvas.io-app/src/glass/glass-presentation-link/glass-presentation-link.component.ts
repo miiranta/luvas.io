@@ -38,6 +38,10 @@ export class GlassPresentationLinkComponent {
   navigateTo(url: string) {
     this.redirectService.navigateTo(url);
   }
+
+  emailTo(email: string) {
+    this.redirectService.emailTo(email);
+  }
   
   run(command: string) {
     if(command == "") return;

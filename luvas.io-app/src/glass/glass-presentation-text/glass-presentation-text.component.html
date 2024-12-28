@@ -1,23 +1,23 @@
-<div class="f f-col f-center">
+<div class="f f-col f-center w100">
 
     @for (item of content; track item){
 
         @switch (item.type) {
 
             @case ('title') {
-                <div class="f f-row f-center">
+                <div class="f f-row f-center w100">
                     <h1 class="h1p {{item.classes?.join(' ') ?? ''}}">{{item.content}}</h1>
                 </div>
             }
 
             @case ('subtitle') {
-                <div class="f f-row f-center">
+                <div class="f f-row f-center w100">
                     <h2 class="h2p {{item.classes?.join(' ') ?? ''}}">{{item.content}}</h2>
                 </div>
             }
 
             @case ('text') {
-                <div class="f f-row f-center">
+                <div class="f f-row f-center w100">
                     <p class="textp {{item.classes?.join(' ') ?? ''}}">{{item.content}}</p>
                 </div>
             }

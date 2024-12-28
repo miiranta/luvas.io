@@ -160,7 +160,7 @@ Compiles all presentation components.
 ```typescript
 [
 
-    // One row
+    // A block
     [
         {type: 'media', content: [{src: 'glass-assets/icons/filter-white.png'}], config: {width: '100px', height: '100px'}},
         {type: 'text', content: [{type: 'title', content: 'Sussa', classes:[]}] },
@@ -168,7 +168,7 @@ Compiles all presentation components.
         {type: 'space', content: {classes: ['hey']}}, //Give some spacing if needed
     ],
 
-    // Another row
+    // Another block
     [
         {type: 'media', content: [{src: 'glass-assets/icons/filter-white.png'}], config: {width: '100px', height: '100px'}},
         {type: 'text', content: [{type: 'title', content: 'Sussa', classes:[]}] },

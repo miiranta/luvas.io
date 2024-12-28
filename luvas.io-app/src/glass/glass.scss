@@ -136,8 +136,24 @@ a:hover {
     width: 100%;
 }
 
+.w90vw {
+    width: 90vw;
+}
+
+.w100vw {
+    width: 100vw;
+}
+
 .h100 {
     height: 100%;
+}
+
+.h90vh {
+    height: 90vh;
+}
+
+.h100vh {
+    height: 100vh;
 }
 
 // FX ------------------------------
@@ -261,3 +277,39 @@ a:hover {
 }
 
 // ---------------------------------
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.m-up {
+    margin-top: 25px !important;
+}
+
+.m-down {
+    margin-bottom: 25px !important;
+}
+
+.m-left {
+    margin-left: 20px !important;
+}
+
+.m-right {
+    margin-right: 20px !important;
+}
+
+.txt-align-center {
+    text-align: center !important;
+}
+
+.txt-align-start {
+    text-align: start !important;
+}
+
+.txt-align-end {
+    text-align: end !important;
+}
