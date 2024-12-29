@@ -1,5 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+
+const thisfile_path = __dirname;
+const envfile_path = path.join(thisfile_path, "../env/luvas.io/");
+require('dotenv').config({path: envfile_path + '.env'});
 
 var productionMode = false;
 process.argv.forEach((val, index) => {
@@ -23,12 +28,12 @@ if (productionMode) {
     }
     );
 
-    app.listen(8080, () => console.log('Server started on port 8080 (PROD)'));
+    app.listen(process.env["PORT_PROD_API"], () => console.log('Server started on port ' + process.env["PORT_PROD_API"] + ' (PROD)'));
 }
 
 // Angular index (development)
 else {
 
-    app.listen(4201, () => console.log('Server started on port 4201 (DEV)'));
+    app.listen(process.env["PORT_DEV_API"], () => console.log('Server started on port ' + process.env["PORT_DEV_API"] + ' (DEV)'));
     
 }
