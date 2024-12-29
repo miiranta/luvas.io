@@ -32,6 +32,8 @@ body {
     padding: 0;
 
     z-index: -10;
+
+    overflow: hidden;
 }
 
 div {
@@ -312,4 +314,8 @@ a:hover {
 
 .txt-align-end {
     text-align: end !important;
+}
+
+.txt-justify {
+    text-align: justify !important;
 }

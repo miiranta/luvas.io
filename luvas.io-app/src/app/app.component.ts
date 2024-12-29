@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { GlassLoadingComponent } from '../glass/glass-loading/glass-loading.component';
@@ -14,8 +14,16 @@ import { SimplebarAngularModule, SimplebarAngularComponent } from 'simplebar-ang
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'luvas.io-app';
+  sbOptions = { autoHide: true, scrollbarMinSize: 100 };
 
-  sbOptions = { autoHide: false, scrollbarMinSize: 100 };
+  @ViewChild('bodySb') bodySb!: SimplebarAngularComponent;
+  
+  ngAfterViewChecked() {
+    this.recalcSb();
+  }
+
+  recalcSb() {
+    this.bodySb.SimpleBar.recalculate();
+  }
 
 }

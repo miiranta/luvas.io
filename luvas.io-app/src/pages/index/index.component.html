@@ -57,11 +57,24 @@
         {type: 'link', 
             content: [
                 {
+                    type: 'link', content: 'lucasmi@usp.br', onclick: 'emailTo(`lucasmi@usp.br`)',
+                    classes: []
+                },
+                {
                     type: 'link', content: 'lucasrezende12@hotmail.com', onclick: 'emailTo(`lucasrezende12@hotmail.com`)',
+                    classes: []
+                },
+            ], 
+            config: {orientation: 'horizontal'}
+        },
+        {type: 'link', 
+            content: [
+                {
+                    type: 'link', content: '+55 22 988121205', onclick: 'navigateTo(`https://wa.me/5522988121205`)',
                     classes: []
                 }
             ], 
-            config: {orientation: 'horizontal'}
+            config: {orientation: 'vertical'}
         }
     ],
 
@@ -71,3 +84,5 @@
 
 ]"
 ></glass-presentation>
+
+<div style="height: 100px;"></div>

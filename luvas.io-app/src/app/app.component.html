@@ -26,13 +26,14 @@
     }"
 ></glass-navbar>
 
-
 <div class="body-container-outer">    
-<ngx-simplebar [options]="sbOptions">
+<ngx-simplebar [options]="sbOptions" #bodySb>
 <div class="body-container">    
+<div class="body-margin">    
 
     <router-outlet></router-outlet>    
 
+</div>
 </div>
 </ngx-simplebar>
 </div>
