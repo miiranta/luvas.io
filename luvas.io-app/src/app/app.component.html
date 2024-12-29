@@ -1,29 +1,38 @@
 <glass-loading></glass-loading>
 
 <glass-background 
-[config]=
-"{
-    type: '', 
-    mouse_follow: false, 
-    gradient: 'radial'
-}"
+    [config]=
+    "{
+        type: '', 
+        mouse_follow: false, 
+        gradient: 'radial'
+    }"
 ></glass-background>
 
 <glass-navbar
-[config]=
-"{
-    title_start: ['luvas.io'],
-    title_end: ['Created by', 'Lucas Miranda'],
-    links: [
-        [
-            {title: '', link: '/', classes: ['icon', 'ion-ios-home-outline']},
-        ],
-        [
-            {title: '', link: '/portifolio', classes: ['icon', 'ion-ios-book-outline']},
-            {title: '', link: '/resume', classes: ['icon', 'ion-ios-list-outline']},
+    [config]=
+    "{
+        title_start: ['luvas.io'],
+        title_end: ['Created by', 'Lucas Miranda'],
+        links: [
+            [
+                {title: '', link: '/', classes: ['icon', 'ion-ios-home-outline']},
+            ],
+            [
+                {title: '', link: '/portifolio', classes: ['icon', 'ion-ios-book-outline']},
+                {title: '', link: '/resume', classes: ['icon', 'ion-ios-list-outline']},
+            ]
         ]
-    ]
-}"
+    }"
 ></glass-navbar>
 
-<router-outlet></router-outlet>
+
+<div class="body-container-outer">    
+<ngx-simplebar [options]="sbOptions">
+<div class="body-container">    
+
+    <router-outlet></router-outlet>    
+
+</div>
+</ngx-simplebar>
+</div>
