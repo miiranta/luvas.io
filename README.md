@@ -107,15 +107,15 @@ Push the image.
 docker push miiranta/luvas.io
 ```
 
-- Run
-
 Pull the image (after logging in).
 ```bash
 docker pull miiranta/luvas.io
 ```
 
+- Run
+
 Run the image.
 ```bash
-docker run -p 80:80 -p 443:443 miiranta/luvas.io
+docker run -p 80:80 -p 443:443 --restart always --pull always miiranta/luvas.io
 ```
 
