@@ -30,7 +30,7 @@
                 <div class="f f-row f-center" style="height: 60px;">
                     @for (item of group; track item){
                         <div class="f f-col f-center h100">
-                        <a class="glass-navbar-link {{item.classes?.join(' ') ?? ''}}" (click)="navigateToAndClose(item.link);">{{item.title}}</a>
+                        <p class="glass-navbar-link {{item.classes?.join(' ') ?? ''}}" (click)="navigateToAndClose(item.link);">{{item.title}}</p>
                         </div>
                     }
 
@@ -65,7 +65,7 @@
     <div class="f f-row f-center glass-navbar-sub shadow glass">
 
         <div class="f f-row f-start">
-            <h2 class="glass-navbar-title-start" style="margin-left:4px;" (click)="navigateToPart(-1);">home</h2>
+            <h2 class="glass-navbar-title-start" style="margin-left:12px;" (click)="navigateToPart(-1);">home</h2>
             @if (route_parts.length > 0){
                 @for (item of route_parts; track item){
                     <h2 class="glass-navbar-title-start" (click)="navigateToPart($index);">{{item}}</h2>

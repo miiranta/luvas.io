@@ -139,7 +139,7 @@ export class GlassNavbarComponent {
       // Transform 180 glass-navbar-title-end
       anime({
         targets: '.glass-navbar-title-end',
-        rotate: 270,
+        rotate: 90,
         duration: 10,
         easing: 'easeInOutQuad'
       });
@@ -147,7 +147,7 @@ export class GlassNavbarComponent {
       // Translate down
       anime({
         targets: nav,
-        translateY: 60,
+        translateY: -60,
         duration: 300,
         easing: 'easeInOutQuad',
         complete: () => {
@@ -162,7 +162,7 @@ export class GlassNavbarComponent {
       // Transform 180 glass-navbar-title-end
       anime({
         targets: '.glass-navbar-title-end',
-        rotate: 90,
+        rotate: 270,
         duration: 10,
         easing: 'easeInOutQuad'
       });
