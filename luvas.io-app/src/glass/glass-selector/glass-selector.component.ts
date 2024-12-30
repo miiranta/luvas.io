@@ -303,8 +303,8 @@ export class GlassSelectorComponent {
       return acc;
     }, []);
 
-    // Add ALL tag
-    this.tagAndFreq.push({ tag: 'ALL', freq: items.length, selected: true });
+    // Add ALL tag in the beginning	
+    this.tagAndFreq.unshift({ tag: 'ALL', freq: items.length, selected: true });
 
     // Add tags to searchTags
     this.searchTags = this.tagAndFreq.map((tagAndFreq) => tagAndFreq.tag);
