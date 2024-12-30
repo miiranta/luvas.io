@@ -99,23 +99,23 @@ Create a repository named "luvas.io".
 
 Tag the image.
 ```bash
-docker tag luvas.io user/luvas.io
+docker tag luvas.io miiranta/luvas.io
 ```
 
 Push the image.
 ```bash
-docker push user/luvas.io
+docker push miiranta/luvas.io
 ```
 
 - Run
 
 Pull the image (after logging in).
 ```bash
-docker pull user/luvas.io
+docker pull miiranta/luvas.io
 ```
 
 Run the image.
 ```bash
-docker run -p 4000:4000 user/luvas.io
+docker run -p 80:80 -p 443:443 miiranta/luvas.io
 ```
 

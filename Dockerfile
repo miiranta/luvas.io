@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . /app
 
 WORKDIR /app/luvas.io-api
-CMD ["npm", "run", "prod"]
+CMD ["npm", "run", "prodssl"]
 
-EXPOSE 4000
+EXPOSE 80
+EXPOSE 443
