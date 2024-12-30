@@ -143,6 +143,14 @@ a:hover {
     width: 100%;
 }
 
+.w30vw {
+    width: 30vw;
+}
+
+.w40vw {
+    width: 40vw;
+}
+
 .w45vw {
     width: 45vw;
 }
@@ -159,7 +167,15 @@ a:hover {
     height: 100%;
 }
 
-h45vh {
+.h30vh {
+    height: 30vh;
+}
+
+.h40vh {
+    height: 40vh;
+}
+
+.h45vh {
     height: 45vh;
 }
 
@@ -305,8 +321,16 @@ h45vh {
     margin-top: 25px !important;
 }
 
+.m-up-200 {
+    margin-top: 200px !important;
+}
+
 .m-down {
     margin-bottom: 25px !important;
+}
+
+.m-down-200 {
+    margin-bottom: 200px !important;
 }
 
 .m-left {

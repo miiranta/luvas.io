@@ -25,7 +25,7 @@ export class GlassPresentationTextComponent {
 
       if (typeof item.content === 'string') {
 
-        // Print anything inside *...*
+        // Print anything inside *...* as bold
         item.content = item.content.replace(/\*(.*?)\*/g, '<b>$1</b>');
 
         // Convert to safe html

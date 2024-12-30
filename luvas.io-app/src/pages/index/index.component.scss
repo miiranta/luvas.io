@@ -1,3 +1,10 @@
 ::ng-deep .body-margin {
     padding-left: 10px !important;
 }
+
+@media screen and (orientation: portrait) {
+
+    ::ng-deep.outer2 {
+        margin: 10px !important;
+    }
+}
