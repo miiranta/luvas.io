@@ -1,9 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 
 import { GlassLoadingService } from './../glass-loading/glass-loading.service';
-import { set } from 'animejs';
+import { GlassRedirectComponent } from './../../glass-redirect/glass-redirect.component';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,29 @@ export class GlassRedirectService {
   
   private router: Router = inject(Router);
   private loadingService: GlassLoadingService = inject(GlassLoadingService);
+
+  constructor() {
+
+    // Add redirect/mailto to router, if it doesn't exist
+    if(!this.router.config.find((r) => r.path === 'redirect/:url')) {
+
+      let r1: Route = {
+        path: 'redirect/:url',
+        component: GlassRedirectComponent
+      };
+      this.router.config.unshift(r1);
+
+      let r2: Route = {
+        path: 'mailto/:url',
+        component: GlassRedirectComponent
+      };
+      this.router.config.unshift(r2);
+
+      this.router.resetConfig(this.router.config);
+
+    }
+
+  }
 
   navigateTo(url: string): void {
 
@@ -26,12 +49,16 @@ export class GlassRedirectService {
 
       // External URL
       if(url.includes('http') || url.includes('https')) {
-        // Open new tab
-        window.open(url, '_blank');
+
+        const url_encoded = encodeURIComponent(url);
+
+        window.open("redirect/" + url_encoded, '_blank');
+
         this.loadingService.hideLoadingScreen();
         return;
       }
-      
+
+      // Internal URL
       this.router.navigate([url])
       .catch((error) => {this.loadingService.hideLoadingScreen();});
 
@@ -39,7 +66,7 @@ export class GlassRedirectService {
   }
 
   emailTo(email: string): void {
-    window.open(`mailto:${email}`);
+    window.open("mailto/" + `mailto:${email}`, '_blank');
   }
 
   getURL(): string {
@@ -50,4 +77,5 @@ export class GlassRedirectService {
   getRoute(): string {
     return this.router.url;
   }
+
 }

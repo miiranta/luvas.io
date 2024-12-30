@@ -37,6 +37,7 @@ Adds a nice background.
 Adds a loading screen.
 Use the redirect service's navigateTo method to have this integrated.
 
+Add it to the app component!
 Better results if you put it in the app component instead of in each page.
 - In that case, in each other page, call glass-loading service showLoadingScreen() inside ngAfterViewInit().
 ```typescript

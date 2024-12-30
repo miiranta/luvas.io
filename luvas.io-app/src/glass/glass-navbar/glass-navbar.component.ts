@@ -80,7 +80,10 @@ export class GlassNavbarComponent {
   }
 
   renderRoutes() {
-    const route = this.redirectService.getURL();
+    let route = this.redirectService.getURL();
+
+    // Remove query params
+    route = route.split('?')[0];
 
     // Break the route into parts
     this.route_parts = route.split('/');
@@ -95,6 +98,12 @@ export class GlassNavbarComponent {
     this.route_parts = this.route_parts.map((part) => {
       return '/' + part;
     });
+
+    // Remove empty parts 
+    this.route_parts = this.route_parts.filter((part) => {
+      return (part != '') && (part != '/');
+    });
+    
   }
 
   navigateToPart(route_idx: number) {
