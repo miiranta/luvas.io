@@ -37,3 +37,5 @@ else {
     app.listen(process.env["PORT_DEV_API"], () => console.log('Server started on port ' + process.env["PORT_DEV_API"] + ' (DEV)'));
     
 }
+
+module.exports = app;
