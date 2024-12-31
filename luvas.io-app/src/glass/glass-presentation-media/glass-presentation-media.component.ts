@@ -30,23 +30,25 @@ export class GlassPresentationMediaComponent {
   image_inital_translate = 0;
   image_width = 0;
 
+  private image_wrapper: any;
   private image_wrapper_width = 0;
 
-  ngAfterViewInit() {
-    const image_wrapper = this.viewport.nativeElement.querySelector('.glass-p-image-wrap');
-    this.image_wrapper_width = image_wrapper.getBoundingClientRect().width;
+  ngOnInit() {
+    this.image_total = this.content.length;
+  }
 
-    this.image_width = this.image_wrapper_width / this.image_total;
+  ngAfterViewInit() {
+    // No of images * width
+    this.image_wrapper_width = this.image_total * parseInt(this.config.width, 10);
+    
+    this.image_width = this.image_wrapper_width / this.image_total; // or just this.config.width
     
     // Translate to the first image
     this.image_translate = (this.image_wrapper_width/2 - this.image_width/2);
-    image_wrapper.style.left = `${this.image_translate}px`;
+    this.image_wrapper = this.viewport.nativeElement.querySelector('.glass-p-image-wrap');
+    this.image_wrapper.style.left = `${this.image_translate}px`;
 
     this.image_inital_translate = this.image_translate;
-  }
-
-  ngAfterContentInit() {
-    this.image_total = this.content.length;
   }
 
   goLeft(viewport: any) {
