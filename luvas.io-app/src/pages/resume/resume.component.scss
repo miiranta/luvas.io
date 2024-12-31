@@ -1,5 +1,10 @@
-::ng-deep resume-page {
-    display: flex;
+::ng-deep.inner-resume {
+    height: 60vh;
+}
 
-    height: 90vh;
+@media screen and (orientation: portrait) {
+
+    ::ng-deep.inner-resume {
+        height: 50vh !important;
+    }
 }
