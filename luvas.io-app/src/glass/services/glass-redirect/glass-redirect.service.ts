@@ -37,7 +37,7 @@ export class GlassRedirectService {
   }
 
   navigateTo(url: string): void {
-
+    
     // Is it self redirect?
     if (this.getRoute() === url) {
       return;

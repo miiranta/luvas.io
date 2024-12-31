@@ -1,5 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { GlassRedirectService } from '../services/glass-redirect/glass-redirect.service';
 
 interface presentationTextContent {
   type: string;
@@ -17,7 +18,14 @@ export class GlassPresentationTextComponent {
   @Input() content: presentationTextContent[] = [];
 
   private sanitizer = inject(DomSanitizer);
+  private redirectService: GlassRedirectService = inject(GlassRedirectService);
   
+  constructor() {
+    // Bind the functions to the component instance
+    (window as any)['navigateTo'] = this.navigateTo.bind(this);
+    (window as any)['emailTo'] = this.emailTo.bind(this);
+  }
+
   ngOnInit() { 
 
     // Parse content
@@ -30,12 +38,22 @@ export class GlassPresentationTextComponent {
 
         // Convert to safe html
         item.content = this.sanitizer.bypassSecurityTrustHtml(item.content as string);
-        
+
       }
 
     });
 
-
   }
 
+  navigateTo(url: string): void {
+    this.redirectService.navigateTo(url);
+  }
+
+  emailTo(email: string): void {
+    this.redirectService.emailTo(email);
+  }
+
+  
+
 }
+
