@@ -24,7 +24,7 @@
     @if (image_total > 1){
 
         <div class="f f-row f-center" style="margin: 10px;">
-            <div class="f f-col f-center btn-square" (click)="goLeft(imageViewport)">
+            <div class="f f-col f-center btn-square glass-p-media-btn" (click)="goLeft(imageViewport)">
                 <h2><</h2>
             </div>
 
@@ -32,7 +32,7 @@
                 <p>{{image_index + 1}} / {{image_total}}</p>
             </div>
 
-            <div class="f f-col f-center btn-square" (click)="goRight(imageViewport)">
+            <div class="f f-col f-center btn-square glass-p-media-btn" (click)="goRight(imageViewport)">
                 <h2 >></h2>
             </div>
         </div>

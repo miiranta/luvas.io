@@ -1,13 +1,30 @@
 <glass-loading-close-on-view-init></glass-loading-close-on-view-init>
 
-<div class="f f-row f-center" style="height: 90%; max-height: 800px; width: 100%; margin-top: 20px; margin-bottom: 20px;">
-<div class="f f-col f-center" style="height: 90%; max-width: 900px; width: 98%;">
+<div class="f f-row f-center w100">
+<div class="f f-col f-center w100">    
 
-    <iframe src="./pages/resume/resume.html" style="height: 100%; width: 100%; background-color: white;"></iframe>
+    <div style="height: 210px;"></div>
 
-    <button class="btn btn-wide" style="margin: 20px;" (click)="downloadPDF()">Download PDF</button>
+    <div class="f f-row f-center w100" style="margin-top: 0px;">
+        <h1>My resume</h1>
+    </div>
 
-</div>    
+    <div class="f f-row f-center" style="max-height: 800px; width: 100%; margin-top: 30px; margin-bottom: 20px;">
+    <div class="f f-col f-center" style="height: 60vh; max-width: 900px; width: 95vw;">
+
+        <iframe src="./pages/resume/resume.html" style="height: 100%; width: 100%; background-color: white;"></iframe>
+
+    </div>    
+    </div>
+
+    <div class="f f-row f-center w100" style="margin-top: 10px; margin-bottom: 30px;">
+        <button class="btn btn-wide" style="margin: 0px;" (click)="downloadPDF()">Download PDF</button>
+    </div>
+
+    <div style="height: 200px;"></div>
+
 </div>
+</div>
+
 
 
