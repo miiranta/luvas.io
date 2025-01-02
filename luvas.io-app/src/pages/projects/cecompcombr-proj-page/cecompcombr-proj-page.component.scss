@@ -1,0 +1,14 @@
+::ng-deep.outer2 {
+    margin: 8px !important;
+}
+
+@media screen and (orientation: portrait) {
+
+    ::ng-deep.w40vw {
+        width: 80vw !important;
+    }
+
+    ::ng-deep.outer2 {
+        margin: 6px !important;
+    }
+}

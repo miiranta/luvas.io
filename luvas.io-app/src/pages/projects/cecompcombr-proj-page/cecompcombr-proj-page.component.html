@@ -1,0 +1,100 @@
+<glass-loading-close-on-view-init></glass-loading-close-on-view-init>
+
+<glass-presentation
+[content]=
+"[
+    [
+        {type: 'text', content: [
+            {type: 'title', content: 'Cecomp.com.br', classes:['m-up', 'm-left', 'm-right', 'txt-align-center', 'w100']},
+            {type: 'subtitle', content: 'A website for the Computer Science Center of USP-RP', classes:['m-left', 'm-right', 'txt-align-center', 'w100']},
+        ]},
+        {type: 'space', content: {classes: ['m-up', 'w90vw']}}
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left']}},
+        {type: 'text', content: [
+            {type: 'text', content: 'Cecomp.com.br was created out of the need to automate tedious work made previosly by members of the Computer Science Center of USP-RP.', classes:['m-left', 'm-right', 'txt-align-start', 'w100']},
+            {type: 'text', content: 'It\'s simple and intuitive to use, but quite complex under the hood.', classes:['m-left', 'm-right', 'txt-align-start', 'w100']},
+        ]},
+        {type: 'space', content: {classes: ['m-up']}},
+        {type: 'link', 
+            content: [
+                {
+                    type: 'button', content: 'Try it out!', onclick: 'navigateTo(`https://cecomp.com.br`)', 
+                    classes: []
+                },
+                {
+                    type: 'button', content: 'Github repository (new)', onclick: 'navigateTo(`https://github.com/cecomp-rp/site`)', 
+                    classes: []
+                },
+                {
+                    type: 'button', content: 'Github repository (old)', onclick: 'navigateTo(`https://github.com/miiranta/cecomp-site`)', 
+                    classes: []
+                }
+                
+            ], 
+            config: {orientation: 'horizontal'}
+        }
+        
+    ],
+
+    [
+        {type: 'media', content: [
+            {src: 'pages/projects/cecompcombr-proj-page/cecomp.gif'},
+            {src: 'pages/projects/cecompcombr-proj-page/cecomp1.png'},
+            {src: 'pages/projects/cecompcombr-proj-page/cecomp2.png'},
+            {src: 'pages/projects/cecompcombr-proj-page/cecomp3.png'},
+            {src: 'pages/projects/cecompcombr-proj-page/cecomp-icon.png'},
+        ], config: {width: '400px', height: '200px'}},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['w90vw']}},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*How can i test it?*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'You can click <a onclick=\'navigateTo(`https://cecomp.com.br`)\'>*Try it out*</a> above to access.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*What problem does it solve?*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: '1. Saves hundreds of hours of time by automating a bunch of manual work that was made previosly by the center: *event subscriptions*, *issuing certificates*, *polls*, *transparency reports*, *bulk email sending*, etc.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: '2. Centralizes communication and social media.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*How was it implemented?*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: '*NodeJS/Express* for the backend. The frontend was made with good old *pure HTML, CSS and Javascript*. Deployment was made initially in a VPS at DigitalOcean, then migrated to a physical server in our department.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Styles and animations are custom-made. ', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Be free to check the technical documentation by clicking <a onclick=\'navigateTo(`https://github.com/cecomp-rp/site`)\'>*Github repository*</a>.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*Credits*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Created by *Lucas Miranda*.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Maintained by *CEComp*.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Some libraries were used, such as SimpleBar, FontAwesome, etc.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['w90vw', 'm-up-200']}},
+    ],
+
+    
+
+]"
+></glass-presentation>
