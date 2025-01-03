@@ -17,6 +17,9 @@
     height: 100%;
     width: 100%;
     position: relative;
+
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
 .glass-p-image-wrap img {

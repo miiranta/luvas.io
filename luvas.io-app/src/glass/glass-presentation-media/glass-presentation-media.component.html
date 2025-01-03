@@ -1,10 +1,10 @@
 <div class="f f-col f-center w100">
 
-    <div class="f f-row f-center glass-p-image-viewport shadow glass" [style.width]="config.width" [style.height]="config.height" #imageViewport>
+    <div class="f f-row f-center glass-p-image-viewport shadow glass" #imageViewport>
 
-        <div class="f f-row f-center glass-p-image-wrap" >
+        <div class="f f-row f-center glass-p-image-wrap" [style.max-width]="config.width" [style.height]="'auto'">
         @for (item of content; track item){
-            <div class="f f-row f-center" [style.width]="config.width" [style.height]="config.height" style="flex-shrink: 0;">
+            <div class="f f-row f-center glass-p-image-wrap2" [style.width]="'100%'" [style.height]="config.height" style="flex-shrink: 0;">
 
             @if(shouldBeLoaded($index)) {
                 @if (isImage(item.src)){

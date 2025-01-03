@@ -1,6 +1,7 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, inject, Input, ViewChild } from '@angular/core';
 
 import anime from 'animejs';
+import { GlassDoceventsService } from '../services/glass-docevents/glass-docevents.service';
 
 interface presentationMediaContent {
   src: string;
@@ -19,6 +20,8 @@ interface presentationMediaConfig {
 })
 export class GlassPresentationMediaComponent {
 
+  private eventService: GlassDoceventsService = inject(GlassDoceventsService);
+
   @Input() content:presentationMediaContent[] = [];
   @Input() config:presentationMediaConfig = {height: '100px', width: '100px'};
 
@@ -29,15 +32,32 @@ export class GlassPresentationMediaComponent {
   image_translate = 0;
   image_inital_translate = 0;
   image_width = 0;
+  image_initial_width = this.config.width;
 
   private image_wrapper: any;
   private image_wrapper_width = 0;
 
+  private window_minimal_margin = 30;
+
   ngOnInit() {
     this.image_total = this.content.length;
+
+    this.eventService.addCallbackToWindowResize(this.onWindowResize_imgs.bind(this));
+
+    const window_width = window.innerWidth - this.window_minimal_margin;
+    this.image_initial_width = this.config.width;
+    if(parseInt(this.image_initial_width, 10) > window_width) {
+      this.config.width = window_width.toString() + 'px';
+    } else {
+      this.config.width = this.image_initial_width;
+    }
   }
 
   ngAfterViewInit() {
+    this.setup_imgs();
+  }
+
+  setup_imgs() {
     // No of images * width
     this.image_wrapper_width = this.image_total * parseInt(this.config.width, 10);
     
@@ -111,6 +131,43 @@ export class GlassPresentationMediaComponent {
     }
 
     return false;
+  }
+
+  onWindowResize_imgs() {
+    const window_width = window.innerWidth - this.window_minimal_margin;
+
+    if(parseInt(this.image_initial_width, 10) > window_width) {
+      this.config.width = window_width.toString() + 'px';
+    } else {
+      this.config.width = this.image_initial_width;
+    }
+
+    this.updateFrameWidth();
+  }
+
+  updateFrameWidth() {
+    this.viewport.nativeElement.style.max_width = this.config.width;
+
+    let img_wrap = this.viewport.nativeElement.querySelector('.glass-p-image-wrap');
+    let img_wrap2 = this.viewport.nativeElement.querySelector('.glass-p-image-wrap2');
+    img_wrap.style.max_width = this.config.width;
+    img_wrap2.style.max_width = this.config.width;
+
+    let images = this.viewport.nativeElement.querySelectorAll('.glass-p-image-wrap img');
+    images.forEach((img: any) => {
+      img.style.max_width = this.config.width;
+    });
+
+    this.setup_imgs();
+
+    this.image_translate = this.image_inital_translate - (this.image_width * this.image_index);
+
+    anime({
+      targets: img_wrap,
+      left: this.image_translate,
+      duration: 500,
+      easing: 'easeInOutQuad'
+    });
   }
 
 }
