@@ -57,6 +57,16 @@ export class GlassSelectorComponent {
   picker_open = false;
   private picker_enable_outside_click = false;
 
+  simpleBarOptions = { 
+    autoHide: true, 
+    scrollbarMinSize: 100,
+  };
+
+  simpleBarOptionsTP = { 
+    autoHide: false, 
+    scrollbarMinSize: 100,
+  };
+
   ngOnInit() {
 
     //
@@ -90,12 +100,6 @@ export class GlassSelectorComponent {
     this.animateCenterPop(this.simplebar_scroll_instance, 0);
 
   }
-
-  simpleBarOptions = { 
-    autoHide: true, 
-    scrollbarMinSize: 100,
-    
-  };
 
   async animateFadeIn(element: HTMLElement){
     

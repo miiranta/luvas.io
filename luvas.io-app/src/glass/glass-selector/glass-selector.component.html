@@ -21,7 +21,7 @@
             
             @if (picker_open) {
                 <div class="glass-selector-tagpicker-options-wrap">
-                <ngx-simplebar class="glass-selector-tagpicker-options-sb" [options]="simpleBarOptions">     
+                <ngx-simplebar class="glass-selector-tagpicker-options-sb" [options]="simpleBarOptionsTP">     
                 <div class="glass-selector-tagpicker-options glass-plane shadow f f-col f-end" #id_picker>
 
                     @for (item of tagAndFreq; track item) {
@@ -49,7 +49,7 @@
     
     </div>
 
-    <div class="glass-selector-main-items"  >
+    <div class="glass-selector-main-items">
     <ngx-simplebar class="glass-selector-sb" [options]="simpleBarOptions" #simplebar_list_instance> 
     <div class="glass-selector-wrap f f-col f-center">
         
@@ -100,8 +100,6 @@
                 </div>
             }
         }
-
-        <div style="height: 30vh;"></div>
 
     </div>
     </ngx-simplebar>

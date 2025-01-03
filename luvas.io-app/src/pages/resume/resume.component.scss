@@ -1,10 +1,18 @@
 ::ng-deep.inner-resume {
-    height: 60vh;
+    height: 70vh;
+}
+
+.mobile {
+    height: 0px;
 }
 
 @media screen and (orientation: portrait) {
 
     ::ng-deep.inner-resume {
-        height: 50vh !important;
+        height: 55vh !important;
+    }
+
+    .mobile {
+        height: 200px;
     }
 }

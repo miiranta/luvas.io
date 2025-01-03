@@ -21,13 +21,13 @@ $list-height: 100%;
 
 // Just the header
 .glass-selector-main-header {
-  height: 25%;
+  height: 15%;
   width: 700px;
 }
 
 // Just the items
 .glass-selector-main-items {
-  height: 75%;
+  height: 85%;
   width: $list-width;
 
   //box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
@@ -37,6 +37,11 @@ $list-height: 100%;
 .glass-selector-wrap {
   height: 100%;
   width: 100%;
+
+  min-height: 90vh;
+
+  padding-top: 0px;
+  padding-bottom: 175px;
 }
 
 .glass-selector-sb {
@@ -126,11 +131,9 @@ $list-height: 100%;
   font-size: 20pt !important;
   font-weight: 600;
 
-  padding-bottom: 20px !important;
-
   margin: 0px;
-  margin-bottom: 5px;
-  padding: 6px;
+  margin-bottom: 6px;
+  padding: 0px;
 }
 
 .glass-selector-item-img {
@@ -167,6 +170,8 @@ $list-height: 100%;
   padding: 0px;
 
   margin-bottom: 10px;
+  margin-top: 2px;
+
 }
 
 .glass-selector-tagpicker-button {
