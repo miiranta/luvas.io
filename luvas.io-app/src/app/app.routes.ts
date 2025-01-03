@@ -5,6 +5,7 @@ import { PortfolioComponent } from './../pages/portfolio/portfolio.component';
 import { ResumeComponent } from './../pages/resume/resume.component';
 import { LuvasioProjPageComponent } from './../pages/projects/luvasio-proj-page/luvasio-proj-page.component';
 import { CecompcombrProjPageComponent } from '../pages/projects/cecompcombr-proj-page/cecompcombr-proj-page.component';
+import { Code404Component } from '../pages/code404/code404.component';
 
 export const routes: Routes = [
 
@@ -21,6 +22,9 @@ export const routes: Routes = [
     { path: 'portfolio/luvasio', component: LuvasioProjPageComponent },
 
     //Project page : Cecomp.com.br
-    { path: 'portfolio/cecompcombr', component: CecompcombrProjPageComponent }
+    { path: 'portfolio/cecompcombr', component: CecompcombrProjPageComponent },
+
+    //Page not found
+    { path: '**', component: Code404Component }
 
 ];
