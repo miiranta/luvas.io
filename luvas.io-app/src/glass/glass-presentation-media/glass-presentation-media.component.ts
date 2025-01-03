@@ -33,6 +33,8 @@ export class GlassPresentationMediaComponent {
   image_inital_translate = 0;
   image_width = 0;
   image_initial_width = this.config.width;
+  image_initial_height = this.config.height;
+  image_aspect_ratio = 1;
 
   private image_wrapper: any;
   private image_wrapper_width = 0;
@@ -44,6 +46,8 @@ export class GlassPresentationMediaComponent {
 
     this.eventService.addCallbackToWindowResize(this.onWindowResize_imgs.bind(this));
 
+    
+
     const window_width = window.innerWidth - this.window_minimal_margin;
     this.image_initial_width = this.config.width;
     if(parseInt(this.image_initial_width, 10) > window_width) {
@@ -51,6 +55,11 @@ export class GlassPresentationMediaComponent {
     } else {
       this.config.width = this.image_initial_width;
     }
+
+    this.image_initial_height = this.config.height;
+
+    this.image_aspect_ratio = parseInt(this.image_initial_height, 10) / parseInt(this.image_initial_width, 10);
+    this.config.height = this.image_aspect_ratio * parseInt(this.config.width, 10) + 'px';
   }
 
   ngAfterViewInit() {
@@ -142,20 +151,29 @@ export class GlassPresentationMediaComponent {
       this.config.width = this.image_initial_width;
     }
 
-    this.updateFrameWidth();
+    this.updateFrameDimensions();
   }
 
-  updateFrameWidth() {
+  updateFrameDimensions() {
+    const height = this.image_aspect_ratio * parseInt(this.config.width, 10) + 'px';
+
     this.viewport.nativeElement.style.max_width = this.config.width;
+    this.viewport.nativeElement.style.height = height;
 
     let img_wrap = this.viewport.nativeElement.querySelector('.glass-p-image-wrap');
-    let img_wrap2 = this.viewport.nativeElement.querySelector('.glass-p-image-wrap2');
     img_wrap.style.max_width = this.config.width;
-    img_wrap2.style.max_width = this.config.width;
+    img_wrap.style.height = height;
 
-    let images = this.viewport.nativeElement.querySelectorAll('.glass-p-image-wrap img');
+    let wrap2 = this.viewport.nativeElement.querySelectorAll('.glass-p-image-wrap2');
+    wrap2.forEach((wrap: any) => {
+      wrap.style.max_width = this.config.width;
+      wrap.style.height = height;
+    });
+
+    let images = this.viewport.nativeElement.querySelectorAll('.glass-p-image-wrap2 img');
     images.forEach((img: any) => {
       img.style.max_width = this.config.width;
+      img.style.max_height = height;
     });
 
     this.setup_imgs();

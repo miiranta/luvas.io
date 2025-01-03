@@ -8,11 +8,11 @@
 
             @if(shouldBeLoaded($index)) {
                 @if (isImage(item.src)){
-                    <img [src]="item.src" [style.width]="'auto'" [style.height]="'auto'" [style.max-width]="config.width" [style.max-height]="config.height"/>
+                    <img [src]="item.src" [style.width]="'auto'" [style.height]="'auto'" [style.max-width]="config.width" [style.max-height]="'100%'"/>
                 }
                 
                 @else if (isVideo(item.src)){
-                    <video [src]="item.src" [style.width]="'auto'" [style.height]="'auto'" [style.max-width]="config.width" [style.max-height]="config.height"></video>
+                    <video [src]="item.src" [style.width]="'auto'" [style.height]="'auto'" [style.max-width]="config.width" [style.max-height]="'100%'"></video>
                 }
             } 
 
