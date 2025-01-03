@@ -46,8 +46,6 @@ export class GlassPresentationMediaComponent {
 
     this.eventService.addCallbackToWindowResize(this.onWindowResize_imgs.bind(this));
 
-    
-
     const window_width = window.innerWidth - this.window_minimal_margin;
     this.image_initial_width = this.config.width;
     if(parseInt(this.image_initial_width, 10) > window_width) {
