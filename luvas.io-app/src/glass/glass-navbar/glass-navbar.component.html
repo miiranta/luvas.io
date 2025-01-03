@@ -6,6 +6,7 @@
     <div class="f f-row f-center glass-navbar-info glass-plane w100">
 
         <!-- Start -->
+        @if (config.title_start.length > 0){
         <div class="f f-row f-start glass-navbar-info-start">
                     
             <div class="f f-col f-center" style="height: 60px;">
@@ -20,6 +21,7 @@
             </div>
 
         </div>
+        }
 
         <!-- Mid -->
         <div class="f f-row f-start glass-navbar-info-mid">
@@ -44,6 +46,7 @@
         </div>
 
         <!-- End -->
+        @if (config.title_end.length > 0){
         <div class="f f-row f-end glass-navbar-end">
 
             <div class="f f-col f-center" style="height: 58px;">
@@ -58,6 +61,7 @@
             
             </div>
         </div>
+        }
 
     </div>   
 
