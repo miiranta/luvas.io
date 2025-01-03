@@ -11,11 +11,6 @@ export class Code404Component {
 
   private redirectService:GlassRedirectService = inject(GlassRedirectService);
 
-  // Change title of the page
-  constructor() {
-    document.title = 'Page not found';
-  }
-
   navigateTo(url: string) {
     this.redirectService.navigateTo(url);
   }

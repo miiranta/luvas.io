@@ -79,6 +79,10 @@ export class GlassNavbarComponent {
     });
   }
 
+  changePageTitle(title: string) {
+    document.title = title;
+  }
+
   renderRoutes() {
     let route = this.redirectService.getURL();
 
@@ -103,7 +107,17 @@ export class GlassNavbarComponent {
     this.route_parts = this.route_parts.filter((part) => {
       return (part != '') && (part != '/');
     });
-    
+
+    // Change page title
+    if(this.route_parts.length == 0) {
+      this.changePageTitle(this.URL);
+    }
+    else {
+      const route_title = this.route_parts[this.route_parts.length - 1].replace('/', '');
+      const title = route_title.charAt(0).toUpperCase() + route_title.slice(1);
+      this.changePageTitle(title);
+    }
+
   }
 
   navigateToPart(route_idx: number) {
