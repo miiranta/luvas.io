@@ -174,6 +174,12 @@ export class GlassPresentationMediaComponent {
       img.style.max_height = height;
     });
 
+    let videos = this.viewport.nativeElement.querySelectorAll('.glass-p-image-wrap2 video');
+    videos.forEach((video: any) => {
+      video.style.max_width = this.config.width;
+      video.style.max_height = height;
+    });
+
     this.setup_imgs();
 
     this.image_translate = this.image_inital_translate - (this.image_width * this.image_index);

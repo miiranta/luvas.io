@@ -30,8 +30,13 @@ export class GlassRedirectService {
       };
       this.router.config.unshift(r2);
 
-      this.router.resetConfig(this.router.config);
+      let r3: Route = {
+        path: 'download/:url',
+        component: GlassRedirectComponent
+      };
+      this.router.config.unshift(r3);
 
+      this.router.resetConfig(this.router.config);
     }
 
   }
@@ -67,6 +72,11 @@ export class GlassRedirectService {
 
   emailTo(email: string): void {
     window.open("mailto/" + `mailto:${email}`, '_blank');
+  }
+
+  download(url: string): void {
+    const url_encoded = encodeURIComponent(url);
+    window.open("download/" + url_encoded, '_blank');
   }
 
   getURL(): string {

@@ -42,6 +42,10 @@ export class GlassPresentationLinkComponent {
   emailTo(email: string) {
     this.redirectService.emailTo(email);
   }
+
+  download(url: string) {
+    this.redirectService.download(url);
+  }
   
   run(command: string) {
     if(command == "") return;

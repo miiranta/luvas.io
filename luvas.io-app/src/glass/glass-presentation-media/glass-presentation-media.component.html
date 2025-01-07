@@ -4,7 +4,7 @@
 
         <div class="f f-row f-center glass-p-image-wrap" [style.max-width]="config.width" [style.height]="'auto'">
         @for (item of content; track item){
-            <div class="f f-row f-center glass-p-image-wrap2" [style.width]="'100%'" [style.height]="config.height" style="flex-shrink: 0;">
+            <div class="f f-row f-center glass-p-image-wrap2" [style.width]="config.width" [style.height]="config.height" style="flex-shrink: 0; flex-grow: 1;">
 
             @if(shouldBeLoaded($index)) {
                 @if (isImage(item.src)){

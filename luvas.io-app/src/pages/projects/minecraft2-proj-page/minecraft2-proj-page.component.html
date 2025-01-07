@@ -1,1 +1,118 @@
-<p>minecraft2-proj-page works!</p>
+<glass-loading-close-on-view-init></glass-loading-close-on-view-init>
+
+<glass-presentation
+[content]=
+"[
+    [
+        {type: 'text', content: [
+            {type: 'title', content: '\'Minecraft 2\'', classes:['m-up', 'm-left', 'm-right', 'txt-align-center', 'w100']},
+            {type: 'subtitle', content: 'A 3D game made for Computer Graphics Classes.', classes:['m-left', 'm-right', 'txt-align-center', 'w100']},
+        ]},
+        {type: 'space', content: {classes: ['m-up', 'w90vw']}}
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left' , 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'text', content: 'Not real minecraft 2! It\'s a simpler 3D game made with gravity, collisions, lighting and more, for learning.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'You can see the list of all features and how to play <a onclick=\'navigateTo(`https://github.com/miiranta/usp/tree/main/Computer%20Graphics/Projects/1%20-%20OpenGL`)\'>*here*</a>.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: '', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+        {type: 'space', content: {classes: ['m-up']}},
+        {type: 'link', 
+            content: [
+                {
+                    type: 'button', content: 'Github repository', onclick: 'navigateTo(`https://github.com/miiranta/usp/tree/main/Computer%20Graphics/Projects`)', 
+                    classes: []
+                },
+                
+            ], 
+            config: {orientation: 'horizontal'}
+        }
+        
+    ],
+
+    [
+        {type: 'media', content: [
+            {src: 'pages/projects/minecraft2-proj-page/minecraft2.gif'},
+            {src: 'pages/projects/minecraft2-proj-page/minecraft2-2.png'},
+            {src: 'pages/projects/minecraft2-proj-page/minecraft2-1.png'},
+            {src: 'pages/projects/minecraft2-proj-page/minecraft2-3.png'},
+            {src: 'pages/projects/minecraft2-proj-page/minecraft2-icon.png'},
+        ], config: {width: '600px', height: '300px'}},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['w90vw']}},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left' , 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'text', content: 'Also, a conceptual recreation of the game in blender.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+        {type: 'space', content: {classes: ['m-up']}},
+        {type: 'link', 
+            content: [
+                {
+                    type: 'button', content: 'Download .blend (~168MB)', onclick: 'download(`large-files/minecraft2-blender.blend`)', 
+                    classes: []
+                },
+            ], 
+            config: {orientation: 'horizontal'}
+        }
+        
+    ],
+
+    [
+        {type: 'media', content: [
+            {src: 'pages/projects/minecraft2-proj-page/minecraft2-blender.mp4'},
+        ], config: {width: '600px', height: '300px'}},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['w90vw']}},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*How can i test it?*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Unfortunately, for now, you have to compile it in linux yourself. A build will be available for download here soon.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Very simple compile instructions <a onclick=\'navigateTo(`https://github.com/miiranta/usp/tree/main/Computer%20Graphics/Projects/1%20-%20OpenGL`)\'>*here*</a>.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*What problem does it solve?*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'None. It\'s a game i made for learning. Have fun!', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*How was it implemented?*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Made using *OpenGL* in *C++*.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Use of parametric curves for item drops trajectory.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Recriation of game graphics made using *Blender*.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Be free to check all the listed features and technical documentation by clicking <a onclick=\'navigateTo(`https://github.com/miiranta/usp/tree/main/Computer%20Graphics/Projects`)\'>*Github repository*</a>.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*Credits*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Created by *Lucas Miranda*.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['w90vw', 'm-up-200']}},
+    ],
+
+]"
+></glass-presentation>

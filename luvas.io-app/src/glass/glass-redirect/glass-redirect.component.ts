@@ -30,6 +30,10 @@ export class GlassRedirectComponent {
         window.location.href = 'mailto:' + decodeURIComponent(segments[segments.length - 1]);
         break;
 
+      case 'download':
+        this.download(decodeURIComponent(segments[segments.length - 1]));
+        break;
+      
       default:
         console.log('Invalid redirect URL');
         window.close();
@@ -49,6 +53,21 @@ export class GlassRedirectComponent {
 
     }, 1000);
 
+  }
+
+  download(url: string) {
+    const link = document.createElement('a');
+    link.href = url;
+
+    if(url.includes('/') || url.includes('\\')) {
+      link.download = url.split('/').pop() || 'download';
+    }
+    else {
+      link.download = url;
+    }
+
+    link.click();
+    link.remove();
   }
 
 }
