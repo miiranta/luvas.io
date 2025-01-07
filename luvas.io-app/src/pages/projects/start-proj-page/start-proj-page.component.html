@@ -1,1 +1,102 @@
-<p>start-proj-page works!</p>
+<glass-loading-close-on-view-init></glass-loading-close-on-view-init>
+
+<glass-presentation
+[content]=
+"[
+    [
+        {type: 'text', content: [
+            {type: 'title', content: 'STAR-T', classes:['m-up', 'm-left', 'm-right', 'txt-align-center', 'w100']},
+            {type: 'subtitle', content: 'A 2D game made during an exchange semester.', classes:['m-left', 'm-right', 'txt-align-center', 'w100']},
+        ]},
+        {type: 'space', content: {classes: ['m-up', 'w90vw']}}
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left']}},
+        {type: 'text', content: [
+            {type: 'text', content: 'A (very addicting) *2D speedrun game* about colleting stars in an infinite world with multiple biomes.', classes:['m-left', 'm-right', 'txt-align-start', 'w100']},
+            {type: 'text', content: 'You have to find 7 stars in the least amount of time possible.', classes:['m-left', 'm-right', 'txt-align-start', 'w100']},
+            {type: 'text', content: 'Tiles, decoration and mobs have varying attributes and abilities.', classes:['m-left', 'm-right', 'txt-align-start', 'w100']},
+        ]},
+        {type: 'space', content: {classes: ['m-up']}},
+        {type: 'link', 
+            content: [
+                {
+                    type: 'button', content: 'Github repository', onclick: 'navigateTo(`https://github.com/miiranta/tu-braunschweig/tree/main/Pratical%20Aspects%20of%20Computer%20Science`)', 
+                    classes: []
+                },
+                
+            ], 
+            config: {orientation: 'horizontal'}
+        }
+        
+    ],
+
+    [
+        {type: 'media', content: [
+            {src: 'pages/projects/start-proj-page/start.gif'},
+            {src: 'pages/projects/start-proj-page/start.mp4'},
+            {src: 'pages/projects/start-proj-page/start2.png'},
+            {src: 'pages/projects/start-proj-page/start3.png'},
+            {src: 'pages/projects/start-proj-page/start4.png'},
+            {src: 'pages/projects/start-proj-page/start5.png'},
+            {src: 'pages/projects/start-proj-page/start6.png'},
+            {src: 'pages/projects/start-proj-page/start7.png'},
+            {src: 'pages/projects/start-proj-page/start1.png'},
+            {src: 'pages/projects/start-proj-page/start-icon.png'},
+        ], config: {width: '600px', height: '300px'}},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['w90vw']}},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*How can i test it?*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Unfortunately, for now, you have to compile it in linux yourself. A build will be available for download here soon.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Very simple compile instructions <a onclick=\'navigateTo(`https://github.com/miiranta/tu-braunschweig/tree/main/Pratical%20Aspects%20of%20Computer%20Science/Project`)\'>*here*</a>.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*What problem does it solve?*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Your stress :)', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*How was it implemented?*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Created using *SFML* library in *C++*.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'The map is infinite, biomes are procedurally generated with simplex noise.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'The mobs use A* pathfinding.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Animations and sprites are custom-made. Music, sounds and fonts were available online.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Be free to check the technical documentation by clicking <a onclick=\'navigateTo(`https://github.com/miiranta/tu-braunschweig/tree/main/Pratical%20Aspects%20of%20Computer%20Science`)\'>*Github repository*</a>.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['m-right', 'm-left', 'w40vw']}},
+        {type: 'text', content: [
+            {type: 'subtitle', content: '*Credits*', classes:['m-up', 'm-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Created by *Lucas Miranda*.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Some libraries were used, such as Open Simplex Noise and SFML.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Fonts by 1001fonts and dafont.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Music and sounds by incompetech and pixabay.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+            {type: 'text', content: 'Full and detailed attributions <a onclick=\'navigateTo(`https://github.com/miiranta/tu-braunschweig/tree/main/Pratical%20Aspects%20of%20Computer%20Science/Project`)\'>*here*</a>.', classes:['m-left', 'm-right', 'txt-align-start', 'w40vw']},
+        ]},
+    ],
+
+    [
+        {type: 'space', content: {classes: ['w90vw', 'm-up-200']}},
+    ],
+
+    
+
+]"
+></glass-presentation>
