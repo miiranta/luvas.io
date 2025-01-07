@@ -119,13 +119,16 @@ $list-height: 100%;
   padding: 5px;
   margin: 5px;
   
-  font-size: 10pt !important;
-
   float: left;
 
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 20px;
 }
+
+.glass-selector-item-tag p {
+  font-size: 9pt !important;
+}
+
 
 .glass-selector-title {
   font-size: 20pt !important;
