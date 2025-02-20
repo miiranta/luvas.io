@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const api_routes = require('./api/api.js');
 
 const thisfile_path = __dirname;
 const envfile_path = path.join(thisfile_path, "../env/luvas.io/");
@@ -18,6 +19,9 @@ process.argv.forEach((val, index) => {
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// API routes
+api_routes(app);
 
 // Angular index (production)
 if (productionMode) {
