@@ -116,6 +116,6 @@ docker pull miiranta/luvas.io
 
 Run the image.
 ```bash
-docker run -p 80:80 -p 443:443 --restart always miiranta/luvas.io
+docker run -p 80:80 -p 443:443 --restart always miiranta/luvas.io:latest
 ```
 
