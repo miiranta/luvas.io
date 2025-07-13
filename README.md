@@ -9,13 +9,16 @@ Edit `docker-compose.yml` to change:
 
 ```bash
 # Run everything
-docker-compose up -d
+docker compose up -d
+
+# Build
+docker compose build
 
 # Check logs
-docker-compose logs
+docker compose logs
 
 # Stop everything
-docker-compose down
+docker compose down
 ```
 
 ## Services
