@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node app.js",
-    "prod": "node server.js --prod"
+    "prod": "node server.js --prod",
+    "setup": "npm install && cd ../luvas.io-app && npm install && ng build"
   },
   "author": "Lucas Miranda <lucasrezende12@hotmail.com>",
   "mainternerEmail": "lucasrezende12@hotmail.com",
@@ -13,9 +14,6 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "greenlock": "^2.8.9",
-    "greenlock-express": "^4.0.3"
+    "express": "^4.21.2"
   }
 }

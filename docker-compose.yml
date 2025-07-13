@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Nginx reverse proxy with SSL
+  nginx:
+    build: ./nginx
+    container_name: luvas-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+      - "25565:25565"
+    environment:
+      - SSL_EMAIL=lucasrezende12@hotmail.com
+      - SSL_DOMAINS=luvas.io,www.luvas.io
+    volumes:
+      - ./nginx/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - personal-site
+      - minecraft-server
+    networks:
+      - luvas-network
+    restart: unless-stopped
+
+  # Personal website
+  personal-site:
+    build: ./personal-site
+    container_name: luvas-personal-site
+    environment:
+      - NODE_ENV=production
+      - PORT_PROD_API=3000
+      - PORT_DEV_API=3001
+    networks:
+      - luvas-network
+    restart: unless-stopped
+
+  # Minecraft server
+  minecraft-server:
+    image: itzg/minecraft-server
+    container_name: luvas-minecraft-server
+    restart: always
+    tty: true
+    stdin_open: true
+    environment:
+      EULA: "TRUE"
+      VERSION: "1.21.4"
+    volumes:
+      - ./minecraft-server/data:/data
+    networks:
+      - luvas-network
+
+networks:
+  luvas-network:
+    driver: bridge

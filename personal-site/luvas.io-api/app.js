@@ -3,10 +3,6 @@ const cors = require('cors');
 const path = require('path');
 const api_routes = require('./api/api.js');
 
-const thisfile_path = __dirname;
-const envfile_path = path.join(thisfile_path, "../env/luvas.io/");
-require('dotenv').config({path: envfile_path + '.env'});
-
 var productionMode = false;
 process.argv.forEach((val, index) => {
     // Is production "--prod"
@@ -32,13 +28,13 @@ if (productionMode) {
     }
     );
 
-    app.listen(process.env["PORT_PROD_API"], () => console.log('Server started on port ' + process.env["PORT_PROD_API"] + ' (PROD)'));
+    app.listen(process.env.PORT_PROD_API || 3000, () => console.log('Server started on port ' + (process.env.PORT_PROD_API || 3000) + ' (PROD)'));
 }
 
 // Angular index (development)
 else {
 
-    app.listen(process.env["PORT_DEV_API"], () => console.log('Server started on port ' + process.env["PORT_DEV_API"] + ' (DEV)'));
+    app.listen(process.env.PORT_DEV_API || 3001, () => console.log('Server started on port ' + (process.env.PORT_DEV_API || 3001) + ' (DEV)'));
     
 }
 
