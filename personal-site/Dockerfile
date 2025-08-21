@@ -1,6 +1,6 @@
 FROM node:22-alpine
 
-WORKDIR /app
+WORKDIR /personal-site
 
 # Install Angular CLI globally
 RUN npm install -g @angular/cli
@@ -9,7 +9,7 @@ RUN npm install -g @angular/cli
 COPY . .
 
 # Install dependencies and build Angular app
-WORKDIR /app/luvas.io-api
+WORKDIR /personal-site/luvas.io-api
 RUN npm run setup
 
 # Start the application
