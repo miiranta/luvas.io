@@ -9,11 +9,12 @@ services:
       - "25565:25565"
     environment:
       - SSL_EMAIL=lucasrezende12@hotmail.com
-      - SSL_DOMAINS=luvas.io,www.luvas.io
+      - SSL_DOMAINS=luvas.io,www.luvas.io,inflation-form.luvas.io
     volumes:
       - ./nginx/letsencrypt:/etc/letsencrypt
     depends_on:
       - personal-site
+      - inflation-form
       - minecraft-server
     networks:
       - luvas-network
@@ -27,6 +28,19 @@ services:
       - NODE_ENV=production
       - PORT_PROD_API=3000
       - PORT_DEV_API=3001
+    networks:
+      - luvas-network
+    restart: unless-stopped
+
+  # Inflation form
+  inflation-form:
+    build: ./inflation-form
+    container_name: luvas-inflation-form
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      - ./inflation-form/data:/data
     networks:
       - luvas-network
     restart: unless-stopped

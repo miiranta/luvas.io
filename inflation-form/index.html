@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Avaliação de Frases — Inflação</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        max-width: 800px;
+        margin: 24px auto;
+        padding: 12px;
+        line-height: 1.5;
+      }
+      h1 {
+        font-size: 18px;
+      }
+      pre.def {
+        background: #f6f6f6;
+        padding: 12px;
+        border-radius: 6px;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        box-sizing: border-box;
+      }
+      .phrase {
+        margin: 16px 0;
+        padding: 12px;
+        background: #fffbea;
+        border: 1px solid #f0e6b6;
+        border-radius: 6px;
+      }
+      .controls {
+        margin-top: 12px;
+      }
+      button {
+        padding: 8px 12px;
+        margin-right: 8px;
+      }
+      input.letter {
+        width: 40px;
+        font-size: 18px;
+        text-align: center;
+      }
+      .status {
+        margin-top: 12px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <pre class="def">
+DEFINIÇÃO DE OTIMISMO:
+Ocorre quando as projeções indicam que a inflação ficará abaixo da meta ou dentro do intervalo de tolerância com folga. 
+Isso pode sinalizar que o Banco Central vê espaço para reduzir juros ou manter uma política monetária mais acomodatícia.
+
+DEFINIÇÃO DE PESSIMISMO:
+Ocorre quando as projeções apontam para inflação acima da meta ou próxima do teto do intervalo de tolerância. 
+Isso sugere preocupação com pressões inflacionárias e pode justificar uma política monetária mais restritiva.
+
+AVALIE A FRASE COMO
+- OTIMISTA ou
+- NEUTRA ou
+- PESSIMISTA
+</pre
+    >
+
+    <div id="app">
+      <div id="phraseBox">
+        <strong>A FRASE É:</strong>
+        <div id="phrase" class="phrase">Carregando...</div>
+      </div>
+
+      <div class="controls">
+        <fieldset style="border: none; padding: 0; margin: 0">
+          <legend>Sua resposta</legend>
+          <label><input type="radio" name="resp" value="O" />OTIMISTA</label>
+          &nbsp;
+          <label><input type="radio" name="resp" value="N" />NEUTRA</label>
+          &nbsp;
+          <label><input type="radio" name="resp" value="P" />PESSIMISTA</label>
+        </fieldset>
+        <div style="margin-top: 8px">
+          <button id="submitBtn">Enviar</button>
+          <button id="nextBtn" style="display: none">Próxima</button>
+        </div>
+      </div>
+
+      <div class="status" id="status"></div>
+      <div style="margin-top: 8px; font-weight: 600" id="quota">0/0</div>
+    </div>
+
+    <script>
+      (function () {
+        const phraseEl = document.getElementById("phrase");
+        const submitBtn = document.getElementById("submitBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const statusEl = document.getElementById("status");
+
+        let apiBase = window.location.origin;
+        if (!apiBase || apiBase === "null" || apiBase === "file://") {
+          apiBase =
+            window.prompt(
+              "Insira a URL base da API (ex: http://localhost:3000)"
+            ) || "";
+        }
+        apiBase = apiBase.replace(/\/$/, "");
+
+        let current = null; // {date, index, sentence}
+
+        function setStatus(msg, err) {
+          statusEl.textContent = msg || "";
+          statusEl.style.color = err ? "crimson" : "#333";
+        }
+
+        function mapLetterToScore(letter) {
+          if (!letter) return null;
+          const l = letter.trim().toUpperCase();
+          if (l === "O") return 1;
+          if (l === "N") return 0;
+          if (l === "P") return -1;
+          return null;
+        }
+
+        async function fetchSentence() {
+          setStatus("Buscando frase...");
+
+          const radios = document.getElementsByName("resp");
+          radios.forEach((r) => (r.checked = false));
+          submitBtn.disabled = false;
+          nextBtn.style.display = "none";
+
+          try {
+            const res = await fetch((apiBase || "") + "/sentence");
+            if (res.status === 429) {
+              const body = await res.json().catch(() => null);
+              const q = body && body.quota ? body.quota : { max: 0, used: 0 };
+              document.getElementById(
+                "app"
+              ).innerHTML = `<h2>Obrigado por participar!</h2><p>${q.used}/${q.max}</p>`;
+              return;
+            }
+            if (!res.ok) throw new Error("Falha ao obter frase: " + res.status);
+            const data = await res.json();
+            current = data;
+            phraseEl.textContent = data.sentence || JSON.stringify(data);
+            // update quota display if provided
+            const quotaEl = document.getElementById("quota");
+            if (data.quota && quotaEl) {
+              quotaEl.textContent = `${data.quota.used}/${data.quota.max}`;
+            }
+            setStatus("");
+          } catch (err) {
+            phraseEl.textContent = "Erro ao carregar frase.";
+            setStatus(err.message, true);
+          }
+        }
+
+        async function sendResponse() {
+          const radios = document.getElementsByName("resp");
+          let selected = null;
+          for (const r of radios)
+            if (r.checked) {
+              selected = r.value;
+              break;
+            }
+
+          const mapped = mapLetterToScore(selected);
+          if (mapped === null) {
+            setStatus("Selecione uma opção: O, N ou P.", true);
+            return;
+          }
+
+          if (!current) {
+            setStatus("Nenhuma frase carregada.", true);
+            return;
+          }
+
+          const sentenceId = `${current.date}_${current.index}`;
+          setStatus("Enviando resposta...");
+          submitBtn.disabled = true;
+
+          try {
+            const postUrl =
+              (apiBase || "") +
+              `/sentence/${encodeURIComponent(sentenceId)}/${encodeURIComponent(
+                String(mapped)
+              )}`;
+            const resp = await fetch(postUrl, { method: "POST" });
+            if (resp.status === 200) {
+              setStatus("Resposta gravada com sucesso.");
+              nextBtn.style.display = "";
+            } else {
+              const txt = await resp.text();
+              setStatus("Erro ao gravar: " + resp.status + " " + txt, true);
+              submitBtn.disabled = false;
+            }
+          } catch (err) {
+            setStatus("Erro de comunicação: " + err.message, true);
+            submitBtn.disabled = false;
+          }
+        }
+
+        submitBtn.addEventListener("click", sendResponse);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") sendResponse();
+        });
+
+        nextBtn.addEventListener("click", async () => {
+          await fetchSentence();
+        });
+
+        fetchSentence();
+      })();
+    </script>
+  </body>
+</html>
